@@ -1,8 +1,8 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+<div class="container-fluid mt-5">
+    <div class="row col-md-6 border mx-2">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 mx-auto">
             <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-                <div formGroupName="userData">
+                <!-- <div formGroupName="userData"> -->
                     <div class="form-group my-3">
                         <label 
                             for="username"
@@ -12,11 +12,13 @@
                             class="form-control"
                             formControlName="username"
                             id="username"
-                            required>
+                            placeholder="Enter your fullname"
+                            [ngClass]="{'is-invalid' : signupForm.controls['username'].touched === true && signupForm.controls['username'].valid === false}">
+                        <div class="invalid-feedback">Username cannot be empty</div>
                     </div>
-                    <span class="form-label">Register as - </span>
-                    <div *ngFor="let userProfile of userProfiles" (click)="updateEmailInputType(this)">
-                        <label>
+                    <span class="form-label d-block">Register as: </span>
+                    <div *ngFor="let userProfile of userProfiles" class="form-check form-check-inline">
+                        <label (change)="updateEmailInputType(this)">
                             <input 
                                 type="radio" 
                                 [value]="userProfile"
@@ -34,11 +36,13 @@
                                 formControlName="email"
                                 id="email"
                                 placeholder="Enter your official KIIT email Id"
-                                aria-describedby="basic-addon2">
+                                aria-describedby="basic-addon2"
+                                [ngClass]="{'is-invalid' : signupForm.controls['email'].touched === true && signupForm.controls['email'].valid === false}">
                         <span class="input-group-text" id="basic-addon2">@kiit.ac.in</span>
+                        <div class="invalid-feedback">Enter a valid email id.</div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
                 <div class="form-group mt-3">
                     <label 
                         for="password"
@@ -47,7 +51,9 @@
                         type="password"
                         class="form-control"
                         formControlName="password"
-                        id="password">
+                        id="password"
+                        [ngClass]="{'is-invalid' : signupForm.controls['password'].touched === true && signupForm.controls['password'].valid === false}">
+                    <div class="invalid-feedback">Enter a valid password.</div>
                 </div>
                 <div class="form-group mt-3">
                     <label 
@@ -66,11 +72,13 @@
                         <textarea 
                             class="form-control" 
                             id="description" 
-                            rows="3"
+                            rows="2"
                             formControlName="description"></textarea>
                 </div>
-                <button class="btn btn-primary mt-3" type="submit" [disabled]="!signupForm.valid">Submit</button>
-                <p [innerText]="signupForm.get('userData.profile')"></p>
+                <button class="btn btn-primary my-3" type="submit" [disabled]="!signupForm.valid">Submit</button>
             </form>
+    </div>
+    <div class="row col-md-6">
+
     </div>
 </div>

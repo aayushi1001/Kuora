@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-registration-page',
@@ -16,13 +17,11 @@ export class RegistrationPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      'userData': new FormGroup({
-        'username': new FormControl(null),
-        'profile': new FormControl('Professor'),
-        'email': new FormControl(null)
-      }),
-      'password': new FormControl(null),
-      'confirm-password': new FormControl(null),
+      'username': new FormControl(null, [Validators.required]),
+      'profile': new FormControl('Professor', [Validators.required]),
+      'email': new FormControl(null, [Validators.required]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      'confirm-password': new FormControl(null, [Validators.required]),
       'description': new FormControl(null)
     })
   }
@@ -31,7 +30,15 @@ export class RegistrationPageComponent implements OnInit {
     console.log(this.signupForm); 
   }
 
-  updateEmailInputType(formData: any){
-    (this.signupForm.value.userData.profile === 'Student') ? this.emailInputType = 'number' : this.emailInputType = 'text';
+  updateEmailInputType(data: any){
+    (data.signupForm.value.profile === 'Student') ? this.emailInputType = 'number' : this.emailInputType = 'text';
+    console.log("called");
   }
+
+  // ValidateEmails(control: FormControl): Promise<any> | Observable<any>{
+  //   const promise = new Promise<any>((resolve, reject) => {
+  //     if(control.value.toString())
+  //   });
+  //   return promise;
+  // }
 }
