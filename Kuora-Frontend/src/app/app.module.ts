@@ -10,6 +10,12 @@ import { SidenavPageComponent } from './main-page/sidenav-page/sidenav-page.comp
 import { MainPageComponent } from './main-page/main-page.component';
 import { TopnavPageComponent } from './main-page/topnav-page/topnav-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { DisplayAreaPageComponent } from './main-page/display-area-page/display-area-page.component';
+import {PostCallService} from "./resources/post-call.service";
+import {PostStoreService} from "./resources/post-store.service";
+import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
+import { PostCardPageComponent } from './main-page/display-area-page/post-card-page/post-card-page.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +24,18 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     RegistrationPageComponent,
     SidenavPageComponent,
     MainPageComponent,
+    LandingPageComponent,
     TopnavPageComponent,
-    LandingPageComponent
+    DisplayAreaPageComponent,
+    PostCardPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PostCallService,PostStoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
