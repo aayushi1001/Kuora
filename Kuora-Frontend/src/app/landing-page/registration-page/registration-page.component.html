@@ -1,0 +1,81 @@
+
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- <div formGroupName="userData"> -->
+        <div class="form-group my-3">
+            <label 
+                for="username"
+                class="form-label">Username</label>
+            <input 
+                type="text"
+                class="form-control"
+                formControlName="username"
+                id="username"
+                placeholder="Enter your fullname"
+                [ngClass]="{'is-invalid' : signupForm.controls['username'].touched === true && signupForm.controls['username'].valid === false}">
+            <div class="invalid-feedback">Username cannot be empty</div>
+        </div>
+        <span class="form-label d-block">Register as: </span>
+        <div *ngFor="let userProfile of userProfiles" class="form-check form-check-inline">
+            <label (change)="updateEmailInputType(this)">
+                <input 
+                    type="radio" 
+                    [value]="userProfile"
+                    formControlName="profile"> {{ userProfile }}
+            </label>
+        </div>
+        <div class="form-group mt-3">
+            <label 
+                for="email"
+                class="form-label">Email</label>
+            <div class="input-group">
+                <input 
+                    [type]="emailInputType"
+                    class="form-control"
+                    formControlName="email"
+                    id="email"
+                    placeholder="Enter your official KIIT email Id"
+                    aria-describedby="basic-addon2"
+                    [ngClass]="{'is-invalid' : signupForm.controls['email'].touched === true && signupForm.controls['email'].valid === false}">
+            <span class="input-group-text" id="basic-addon2">@kiit.ac.in</span>
+            <div class="invalid-feedback">Enter a valid email id.</div>
+            </div>
+        </div>
+    <!-- </div> -->
+    <div class="form-group mt-3">
+        <label 
+            for="password"
+            class="form-label">Password</label>
+        <input 
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="password"
+            [ngClass]="{'is-invalid' : signupForm.controls['password'].touched === true && signupForm.controls['password'].valid === false}">
+        <div class="invalid-feedback">Please enter a valid password.</div>
+    </div>
+    <div class="form-group mt-3">
+        <label 
+            for="confirm-password"
+            class="form-label">Confirm Password</label>
+        <input 
+            type="password"
+            class="form-control"
+            formControlName="confirm-password"
+            id="confirm-password"
+            [ngClass]="{'is-invalid' : signupForm.controls['confirm-password'].touched === true && signupForm.controls['confirm-password'].valid === false}">
+            <div class="invalid-feedback">Passwords do not match.</div>
+    </div>
+    <div class="form-group mt-3">
+        <label 
+            for="description"
+            class="form-label">Write something about yourself</label>
+            <textarea 
+                class="form-control" 
+                id="description" 
+                rows="2"
+                formControlName="description"></textarea>
+    </div>
+    <!-- <h4 (click)="GoToLogin()">Already Registered? Login now!</h4> -->
+    <button class="btn btn-primary my-3" type="submit" >Submit</button>
+</form>
+
