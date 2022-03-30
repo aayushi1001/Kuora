@@ -1,2 +1,6 @@
 <app-topnav-page [status]="status" (changeStatus)="changeStatusHandler($event)"></app-topnav-page>
 <app-sidenav-page [status]="status"></app-sidenav-page>
+<div class="display-area" [ngClass]="{collapse1:status===true}">
+  <router-outlet></router-outlet>
+</div>
+
