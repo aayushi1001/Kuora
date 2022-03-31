@@ -16,6 +16,9 @@ import {PostStoreService} from "./resources/post-store.service";
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import { PostCardPageComponent } from './main-page/display-area-page/post-card-page/post-card-page.component';
+import { ProfilePageComponent } from './main-page/profile-page/profile-page.component';
+import { VerificationPortalComponent } from './main-page/verification-portal/verification-portal.component';
+import { PostQuestionComponent } from './main-page/display-area-page/post-question/post-question.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { PostCardPageComponent } from './main-page/display-area-page/post-card-p
     LandingPageComponent,
     TopnavPageComponent,
     DisplayAreaPageComponent,
-    PostCardPageComponent
+    PostCardPageComponent,
+    ProfilePageComponent,
+    VerificationPortalComponent,
+    PostQuestionComponent
   ],
   imports: [
     BrowserModule,
