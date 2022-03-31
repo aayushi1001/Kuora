@@ -1,3 +1,14 @@
 .navbar {
     background: var(--primary-color);
 }
+.setting {
+    position: absolute;
+    top: 1px;
+    right: 0;
+}
+.search {
+    margin-right: 60px;
+}
+.menu {
+    z-index: 1080;
+}
