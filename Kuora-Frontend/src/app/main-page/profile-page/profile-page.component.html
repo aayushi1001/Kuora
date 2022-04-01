@@ -1,20 +1,23 @@
 <div class="container-fluid overflow-hide m-4 p-4 mx-auto">
     <div class="col-md-12">
         <button class="btn btn-danger d-inline m-3">Back</button>
-        <button class="btn btn-primary d-inline m-3">Edit Profile</button>
+        <button class="btn btn-primary d-inline m-3" (click)="editableMode()">Edit Profile</button>
     </div>
 
     <div class="row border p-4 m-4">
         <div class="col-md-6">
             <img src="https://cdn2.vectorstock.com/i/1000x1000/54/41/young-and-elegant-woman-avatar-profile-vector-9685441.jpg" class="img-fluid profile-picture" alt="Responsive image">
         </div>
-        <div class="col-md-6 mt-5">
-            <!-- <h4 class="h4-responsive">Name: Aayushi Anand</h4>
-            <h6 class="h5-responsive">Email: 1806274@kiit.ac.in</h6>
-            <h6 class="h5-responsive">Profile: Student</h6>
-            <h6 class="h5-responsive">Verification Status: Not verified</h6>
-            < -->
-            Name : <input type="text" class="form-control" placeholder="Aayushi">
+        <div class="col-md-6 mt-3">
+            <form>
+                Name : <input type="text" class="form-control my-2" [disabled]="!isEditableMode" value="Aayushi" placeholder="Aayushi">
+                Email : <input type="email" class="form-control my-2" [disabled]="!isEditableMode" value="1806274@kiit.ac.in">
+                Password : <input type="password" class="form-control my-2" [disabled]="!isEditableMode" value="1806274@kiit.ac.in">
+                Profile : <input type="text" disabled class="form-control my-2" value="Student" placeholder="Aayushi">
+                Verification Status : <input type="text" disabled class="form-control my-2" value="Not verified">
+                Description : <textarea row="2" [disabled]="!isEditableMode" class="form-control my-2">lorem ipsumjsbdvjhdbhvjbhsbchsdbvchdsvhdshjvhdjvbhjdvjhdbjhvbhjdbvjhdbxhjvbhx</textarea>
+                <button class="btn btn-primary d-inline m-3" (click)="onSubmit()" ng-if="!isEditableMode">Save</button>
+            </form>
         </div>
     </div>         
 </div>

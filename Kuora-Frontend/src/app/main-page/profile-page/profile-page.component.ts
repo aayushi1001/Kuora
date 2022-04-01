@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePageComponent implements OnInit {
 
+  isEditableMode: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  editableMode(){
+    this.isEditableMode = true;
+  }
+
+  onSubmit(){
+    this.isEditableMode = false;
   }
 
 }
