@@ -36,7 +36,7 @@ router.post('/',(req,res,next) => {
                         mobno:email[0].mobno,
                         pic:email[0].pic,
                         tag:email[0].tag,
-                        postcount:email[0].postcount,
+                        // postcount:email[0].postcount,
                     },'my_secret_key'
                     
                     );

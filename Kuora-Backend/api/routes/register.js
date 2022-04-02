@@ -37,20 +37,21 @@ router.post('/',upload.single('pic'),(req,res,next)=>{
                         error:err
                     });
                 }else{
-                    const user =new User({
-                        _id: new mongoose.Types.ObjectId(),
-                        email: req.body.email,
-                        password:hash,
-                        name:req.body.name,
-                        gender:req.body.gender,
-                        bio:req.body.bio,
-                        year:req.body.year,
-                        signupas:req.body.signupas,
-                        mobno:req.body.mobno,
-                        pic:"uploads/Abhishek.jpg",//req.file.path,
-                        tag:req.body.tag,
-                        postcount:req.body.postcount,
-                        
+                    const user = new User({
+                      _id: new mongoose.Types.ObjectId(),
+                      email: req.body.email,
+                      password: hash,
+                      name: req.body.name,
+                      gender: req.body.gender,
+                      bio: req.body.bio,
+                      year: req.body.year,
+                      signupas: req.body.signupas,
+                      mobno: req.body.mobno,
+                      pic: "uploads/Abhishek.jpg", //req.file.path,
+                      tag: req.body.tag,
+                      verified: req.body.verified,
+                      approvedBy: req.body.approvedBy,
+                      // postcount:req.body.postcount,
                     });
                     user
                         .save()

@@ -10,13 +10,14 @@ const bcryptjs= require('bcryptjs');
 router.post('/',(req,res,next) => {
     
         const post = new Post({
-        _id: new mongoose.Types.ObjectId(),
-        creator_email: req.body.creator_email,
-        title: req.body.title,
-        tag: req.body.tag,
-        article: req.body.article,
-        postid: req.body.postid    
-    });
+          // _id: new mongoose.Types.ObjectId(),
+          creator_email: req.body.creator_email,
+          title: req.body.title,
+          tag: req.body.tag,
+          article: req.body.article,
+          // postid: req.body.postid
+          postid: new mongoose.Types.ObjectId(),
+        });
     
     post
     .save()

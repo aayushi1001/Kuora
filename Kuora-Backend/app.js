@@ -23,18 +23,18 @@ const bodyParser = require('body-parser');
 
  const c1_Routes=require('./api/routes/comment_get')
  const c2_Routes=require('./api/routes/comment_get_comment')
- const c3_Routes=require('./api/routes/comment_get_postemail_postid')
- const c4_Routes=require('./api/routes/comment_get_comment_postemail_postid')
+ const c3_Routes=require('./api/routes/comment_get_postid')
+ const c4_Routes=require('./api/routes/comment_get_comment_postid')
  const c5_Routes=require('./api/routes/comment_update')
 
  const v1_Routes=require('./api/routes/vote_get')
- const v2_Routes=require('./api/routes/vote_get_postemail_postid')
- const v3_Routes=require('./api/routes/vote_get_postemail_postid_voter')
+ const v2_Routes=require('./api/routes/vote_get_postid')
+ const v3_Routes=require('./api/routes/vote_get_postid_voter')
 
  const search_Routes=require('./api/routes/search_bar')
  const post_get_tag_Routes=require('./api/routes/post_get_tag')
 
-  const login_google_api_Routes = require('./api/routes/login_google_api');
+ const login_google_api_Routes = require('./api/routes/login_google_api');
 
 
  
@@ -96,13 +96,13 @@ app.use('/post_update',p5_Routes);
 
 app.use('/comment_get',c1_Routes);
 app.use('/comment_get_comment',c2_Routes);
-app.use('/comment_get_postemail_postid',c3_Routes);
-app.use('/comment_get_comment_postemail_postid',c4_Routes);
+app.use('/comment_get_postid',c3_Routes);
+app.use('/comment_get_comment_postid',c4_Routes);
 app.use('/comment_update',c5_Routes);
 
 app.use('/vote_get',v1_Routes);
-app.use('/vote_get_postemail_postid',v2_Routes);
-app.use('/vote_get_postemail_postid_voter',v3_Routes);
+app.use('/vote_get_postid',v2_Routes);
+app.use('/vote_get_postid_voter',v3_Routes);
 
 
 app.use('/search_bar',search_Routes);

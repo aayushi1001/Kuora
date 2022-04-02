@@ -12,7 +12,7 @@ router.post('/',(req,res,next) => {
         const vote = new Vote({
         _id: new mongoose.Types.ObjectId(),
         voter_email: req.body.voter_email,
-        post_email: req.body.post_email,
+        // post_email: req.body.post_email,
         post_id: req.body.post_id,
         rating: req.body.rating,
     });

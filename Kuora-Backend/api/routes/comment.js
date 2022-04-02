@@ -12,7 +12,7 @@ router.post('/',(req,res,next) => {
         const comment = new Comment({
         _id: new mongoose.Types.ObjectId(),
         comment_email: req.body.comment_email,
-        post_email: req.body.post_email,
+        // post_email: req.body.post_email,
         post_id: req.body.post_id,
         commenttxt: req.body.commenttxt,
     });
