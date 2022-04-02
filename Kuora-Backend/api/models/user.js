@@ -13,7 +13,8 @@ const userSchema = mongoose.Schema({
   pic: { type: String, required: true },
   tag: { type: String, required: true },
   verified: { type: Boolean, required: true},
-  approvedBy: { type: String, required: true},
+  approvedBy: { type: String},
+  blocked: { type: Boolean, required: true}
 //   postcount: { type: Number, required: true },
 });
 

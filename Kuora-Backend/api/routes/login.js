@@ -37,6 +37,9 @@ router.post('/',(req,res,next) => {
                         pic:email[0].pic,
                         tag:email[0].tag,
                         postcount:email[0].postcount,
+                        verified:email[0].verified,
+                        approvedBy:email[0].approvedBy,
+                        blocked:email[0].blocked
                     },'my_secret_key'
                     
                     );
