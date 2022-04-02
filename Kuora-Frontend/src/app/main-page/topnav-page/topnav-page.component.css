@@ -2,13 +2,11 @@
     background: var(--primary-color);
 }
 .setting {
-    position: absolute;
+    position: fixed;
     top: 1px;
     right: 0;
+    z-index: 1020;
 }
 .search {
     margin-right: 60px;
-}
-.menu {
-    z-index: 1080;
 }

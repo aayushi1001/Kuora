@@ -16,46 +16,37 @@ export class DisplayAreaPageComponent implements OnInit {
   constructor(private route:ActivatedRoute,private postCallService:PostCallService,private poststoreService:PostStoreService, private router: Router) { }
 
   paramsSubscription: Subscription =new Subscription;
-  postsSubscription: Subscription =new Subscription;
   category:string='';
   post:Post[] = [];
-  ngOnInit(): void {this.paramsSubscription =this.route.params.subscribe((params:Params) =>{
+  private postsSub:Subscription= new Subscription();
+  ngOnInit(): void {
+    this.paramsSubscription =this.route.params.subscribe((params:Params) =>{
     this.post=[];
     this.category = params['category'];
     if(this.category === "all")
     {
-     // this.postsSubscription= this.postCallService.postSession().subscribe(responseData => {
-     //      if(responseData.code===200 && responseData.message==='Post Successfully found')
-     //      {
-     //        this.poststoreService.setEmpty();
-     //        if(responseData.post!=null )
-     //        {
-     //          this.post=responseData.post;
-     //        }
-     //      }
-     //      else{
-     //        console.log("Post Not Found !!!");
-     //      }
-     //    },
-     //    errorMessage=>{
-     //      console.log(errorMessage);
-     //    })
       this.post=this.poststoreService.getPosts();
     }
-    // else if (this.category === "all") {
-    //    this.post=this.poststoreService.getPosts();
-    // }
     else {
       this.post = this.poststoreService.getPostCategory(this.category);
     }
   })
 
+    this.postsSub= this.poststoreService.getPostUpdateListner().subscribe((posts:Post[])=>{
+      // this.post=posts;
+      if(this.category === "all")
+      {
+        this.post=this.poststoreService.getPosts();
+      }
+      else {
+        this.post = this.poststoreService.getPostCategory(this.category);
+      }
+    })
 
 
   }
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
-    this.postsSubscription.unsubscribe();
   }
 
 

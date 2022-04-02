@@ -16,7 +16,7 @@ export class PostStoreService {
     }
     setPosts(creator_email:string, title:string, tag:string, article:string, postid:string){
         this.posts.push(new Post(creator_email,title,tag,article,postid));
-        console.log(this.posts);
+        this.postsUpdated.next([...this.posts]);
     }
     getPosts():Post[]{
         return this.posts;

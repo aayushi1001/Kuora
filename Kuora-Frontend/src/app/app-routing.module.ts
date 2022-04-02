@@ -8,6 +8,7 @@ import { DisplayAreaPageComponent } from "./main-page/display-area-page/display-
 import { PostQuestionComponent } from './main-page/display-area-page/post-question/post-question.component';
 import { ProfilePageComponent } from './main-page/profile-page/profile-page.component';
 import { VerificationPortalComponent } from './main-page/verification-portal/verification-portal.component';
+import {SearchPageComponent} from "./main-page/search-page/search-page.component";
 
 const routes: Routes = [
   {path : '' , redirectTo : '/landing-page' , pathMatch : 'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path : 'main-page' , component : MainPageComponent,
     children:[
       {path : 'display-area/:category', component: DisplayAreaPageComponent},
+      {path : 'search-page/:value', component: SearchPageComponent},
       {path : 'post-question', component: PostQuestionComponent},
       {path : 'profile-page/:username', component: ProfilePageComponent},
       {path : 'verification-portal', component: VerificationPortalComponent}
