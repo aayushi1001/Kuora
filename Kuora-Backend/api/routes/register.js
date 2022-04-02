@@ -47,10 +47,11 @@ router.post('/',upload.single('pic'),(req,res,next)=>{
                       year: req.body.year,
                       signupas: req.body.signupas,
                       mobno: req.body.mobno,
-                      pic: "uploads/Abhishek.jpg", //req.file.path,
+                      pic: req.file.path,//"uploads/Abhishek.jpg", //req.file.path,
                       tag: req.body.tag,
                       verified: req.body.verified,
                       approvedBy: req.body.approvedBy,
+                      blocked: req.body.blocked
                       // postcount:req.body.postcount,
                     });
                     user
