@@ -28,7 +28,7 @@ export class SearchPageComponent implements OnInit ,OnDestroy{
             {
               let postArray:Post[]=responseData.post;
               for(let pst of postArray){
-                this.post.push(new Post(pst.creator_email, pst.title, pst.tag, pst.article, pst.postid));
+                this.post.push(new Post(pst.creator_email, pst.title, pst.tag, pst.article, pst.postid, pst.verified));
               }
             }
           }

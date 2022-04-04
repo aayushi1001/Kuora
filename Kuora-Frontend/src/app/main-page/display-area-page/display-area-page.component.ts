@@ -45,9 +45,53 @@ export class DisplayAreaPageComponent implements OnInit {
 
 
   }
+
+
+  checkUnverified(post:Post) {
+      return !post.verified;
+  }
+  checkVerified(post:Post) {
+    return post.verified;
+  }
+
+  onfilter(tag:string)
+  {
+    if( tag=== 'verified')
+    {
+      if(this.category === 'all')
+      {
+        this.post=this.poststoreService.getPosts().filter(this.checkVerified);
+      }
+      else {
+        this.post = this.poststoreService.getPostCategory(this.category).filter(this.checkVerified);
+      }
+    }
+    else if(tag === 'unverified'){
+      if(this.category === 'all')
+      {
+        this.post=this.poststoreService.getPosts().filter(this.checkUnverified);
+      }
+      else {
+        this.post = this.poststoreService.getPostCategory(this.category).filter(this.checkUnverified);
+      }
+    }
+    else {
+      if(this.category === 'all')
+      {
+        this.post=this.poststoreService.getPosts();
+      }
+      else {
+        this.post = this.poststoreService.getPostCategory(this.category);
+      }
+
+  }
+
+  }
+
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
   }
+
 
 
 }

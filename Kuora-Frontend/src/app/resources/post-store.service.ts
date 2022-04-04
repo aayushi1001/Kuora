@@ -14,8 +14,8 @@ export class PostStoreService {
     setEmpty(){
         this.posts=[];
     }
-    setPosts(creator_email:string, title:string, tag:string, article:string, postid:string){
-        this.posts.push(new Post(creator_email,title,tag,article,postid));
+    setPosts(creator_email:string, title:string, tag:string, article:string, postid:string, verified:boolean){
+        this.posts.push(new Post(creator_email,title,tag,article,postid,verified));
         this.postsUpdated.next([...this.posts]);
     }
     getPosts():Post[]{

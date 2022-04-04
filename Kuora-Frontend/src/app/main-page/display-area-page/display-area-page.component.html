@@ -4,9 +4,9 @@
     Filter
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" >All</a></li>
-    <li><a class="dropdown-item" >Verified Only</a></li>
-    <li><a class="dropdown-item" >UnVerified Only</a></li>
+    <li><a class="dropdown-item" (click)="onfilter('all')" >All</a></li>
+    <li><a class="dropdown-item" (click)="onfilter('verified')" >Verified Only</a></li>
+    <li><a class="dropdown-item" (click)="onfilter('unverified')" >UnVerified Only</a></li>
   </ul>
 </div>
 <div class="container mt-2" align="center">

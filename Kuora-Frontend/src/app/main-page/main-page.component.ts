@@ -29,6 +29,7 @@ export class MainPageComponent implements OnInit {
               let tag = '';
               let article='';
               let postid='';
+              let verified=false;
 
 
               creator_email= eachpost.creator_email===undefined ?'':eachpost.creator_email;
@@ -36,9 +37,10 @@ export class MainPageComponent implements OnInit {
               tag =  eachpost.tag===undefined ?'': eachpost.tag;
               article = eachpost.article===undefined ?'':eachpost.article;
               postid =eachpost.postid===undefined ?'':eachpost.postid;
+              verified = eachpost.verified === undefined? false : eachpost.verified;
 
 
-              this.poststoreService.setPosts(creator_email,title,tag,article,postid);
+              this.poststoreService.setPosts(creator_email,title,tag,article,postid,verified);
 
             }
           }
