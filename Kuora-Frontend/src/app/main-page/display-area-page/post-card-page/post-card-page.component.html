@@ -1,9 +1,12 @@
 <div class="card shadow-sm mt-3">
   <div class="card-body bg-white d-flex">
-    <img src="../../../../assets/img_avatar.png" class="rounded-circle" height="6%" width="6%" alt="">
+    <img src="{{baseImgUrl}}" class="rounded-circle" height="6%" width="6%" alt="">
     <div class="d-block ms-3">
       <h4>{{element.title}}</h4>
-      <div class="text-muted fs-12">{{element.creator_email}}</div>
+      <div class="d-flex">
+        <div class="text-muted fs-12">{{element.creator_email}}</div>
+        <i *ngIf="element.verified === true" class="bi bi-patch-check-fill text-primary ms-2"></i>
+      </div>
       <div class="text-muted fs-12">{{element.tag}}</div>
     </div>
 
@@ -21,6 +24,10 @@
     <div class="btn btn-white d-flex">
       <i class="bi bi-card-list"></i>
       <h6 class="ms-2"> Comment 4*</h6>
+    </div>
+    <div class="btn btn-danger d-flex ms-auto">
+      <i class="bi bi-flag-fill me-2 text-light"></i>
+      Report
     </div>
   </div>
 </div>
