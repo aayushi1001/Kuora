@@ -7,7 +7,7 @@ const bcryptjs = require("bcryptjs");
 
 router.post("/", (req, res, next) => {
   const postid = req.body.postid;
-  Report.findOne({ email: req.body.email })
+  Report.findOne({ postid: req.body.postid })
     .exec()
     .then((post) => {
       if (post) {
@@ -19,7 +19,9 @@ router.post("/", (req, res, next) => {
           .exec()
           .then((result) => {
             console.log(result);
-            res.status(200).json(result);
+            res
+              .status(200)
+              .json({ code: 200, message: "Reported Successfully" });
           })
           .catch((err) => {
             console.log(err);
@@ -38,7 +40,8 @@ router.post("/", (req, res, next) => {
           report: newReport,
         });
 
-        new_report.save()
+        new_report
+          .save()
           .then((result) => {
             res.status(200).json({
               code: 200,
