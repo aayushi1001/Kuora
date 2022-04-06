@@ -1,4 +1,3 @@
-
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <!-- <div formGroupName="userData"> -->
         <div class="form-group my-3">
@@ -75,7 +74,7 @@
                 rows="2"
                 formControlName="description"></textarea>
     </div>
-    <!-- <h6 (click)="GoToLogin()">Already Registered? Login now!</h6> -->
-    <button class="btn btn-primary my-3" type="submit" >Submit</button>
+    <h6 (click)="GoToLogin()">Already Registered? Login now!</h6>
+    <button class="btn btn-primary my-3" [disabled]="!this.signupForm.valid" type="submit">Submit</button>
 </form>
 

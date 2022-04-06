@@ -37,6 +37,7 @@ router.post('/',upload.single('pic'),(req,res,next)=>{
                         error:err
                     });
                 }else{
+                    const pic_path = req.file ? req.file.path : 'uploads/testimg.png';
                     const user = new User({
                       _id: new mongoose.Types.ObjectId(),
                       email: req.body.email,
@@ -47,7 +48,7 @@ router.post('/',upload.single('pic'),(req,res,next)=>{
                       year: req.body.year,
                       signupas: req.body.signupas,
                       mobno: req.body.mobno,
-                      pic: req.file.path,//"uploads/Abhishek.jpg", //req.file.path,
+                      pic: pic_path,//"uploads/Abhishek.jpg", //req.file.path,
                       tag: req.body.tag,
                       verified: req.body.verified,
                       approvedBy: req.body.approvedBy,

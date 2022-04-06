@@ -21,6 +21,7 @@ import { VerificationPortalComponent } from './main-page/verification-portal/ver
 import { PostQuestionComponent } from './main-page/display-area-page/post-question/post-question.component';
 import { SearchPageComponent } from './main-page/search-page/search-page.component';
 import {PostSearchService} from "./resources/post-search.service";
+import { LoginService } from './landing-page/login.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,12 @@ import {PostSearchService} from "./resources/post-search.service";
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [PostCallService,PostStoreService,PostSearchService],
+  providers: [
+    PostCallService,
+    PostStoreService,
+    PostSearchService,
+    LoginService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

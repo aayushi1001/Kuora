@@ -1,6 +1,18 @@
-import { Component, Output, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component, Output, OnInit, Injectable, EventEmitter } from '@angular/core';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, throwError } from 'rxjs';
+import { catchError , tap } from 'rxjs/operators'
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
+import {environment} from 'src/environments/environment';
+import {userDetails } from '../../resources/user-details.model';
+import { LoginService } from '../login.service';
+
+interface RegistrationResponseData{
+  code: number;
+  message: string;
+  user: userDetails[];
+}
 
 @Component({
   selector: 'app-registration-page',
@@ -12,9 +24,12 @@ export class RegistrationPageComponent implements OnInit {
   userProfiles = ['Professor', 'Non-teaching Staff', 'Student'];
   signupForm!: FormGroup;
   emailInputType: string = 'text';
-  @Output() isLogin:boolean = false;
+  errorResponse: string = '';
+  @Output() isLogin = new EventEmitter<boolean>();
   
-  constructor() { }
+  constructor(private http : HttpClient,
+              private router : Router,
+              private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -28,32 +43,60 @@ export class RegistrationPageComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.signupForm); 
+    const signUpformData = new FormData();
+    const userEmail = (this.signupForm.controls['email'].value).toString() + '@kiit.ac.in';
+    signUpformData.append('name', this.signupForm.controls['username'].value);
+    signUpformData.append('password', this.signupForm.controls['password'].value);
+    signUpformData.append('signupas', this.signupForm.controls['profile'].value);
+    signUpformData.append('email', userEmail);
+    signUpformData.append('bio', this.signupForm.controls['description'].value);
+    signUpformData.append('verified', 'false');
+    signUpformData.append('blocked', 'false');
+
+    this.http.post<RegistrationResponseData>(environment.url_Api + 'register', signUpformData)
+    .subscribe(responseData => {
+      if(responseData.code === 200){
+        const LoginData = {
+          email: userEmail,
+          password: this.signupForm.controls['password'].value
+        };
+        console.log(responseData);
+        this.loginService.userLogin(LoginData);
+      } else {
+        this.errorResponse = "This user cannot be registered";
+      }
+    })
   }
 
   updateEmailInputType(data: any){
     (data.signupForm.value.profile === 'Student') ? this.emailInputType = 'number' : this.emailInputType = 'text';
-    console.log("called");
   }
 
   PasswordValidation(control: FormControl){
     let specialCharacter = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
       if((control.value !== null) && (!specialCharacter.test(control.value.toString()) || !/\d/.test(control.value.toString()))){
-        return ({'InvalidPassword' : true});
+        return ({
+          'InvalidPassword' : true
+        });
       } else{
         return (null);
       }
   }
 
   ConfirmPasswordValidation(control: FormControl){
-    let a = "b";
-    if(control.value !== null && this.signupForm.controls['password'] !== control.value){
-      return ({'PasswordMismatch' : true});
+    if(control.value !== null && control.root.value.password !== control.value){
+      return ({
+        'PasswordMismatch' : true
+      });
     }
     return null;
   }
 
   GoToLogin(){
-    this.isLogin = true;
+    this.isLogin.emit(true);
+  }
+
+  onRegister(){
+    this.router.navigate(['/main-page']);
   }
 }
