@@ -7,10 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  @Input() isLogin:boolean = false;
+  gotologin: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleToLogin(data : boolean){
+    this.gotologin = data;
+  }
+
+  toggleToregistration(data: boolean){
+    this.gotologin = data;
+  }
 }

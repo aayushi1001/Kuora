@@ -23,6 +23,7 @@ import { SearchPageComponent } from './main-page/search-page/search-page.compone
 import {PostSearchService} from "./resources/post-search.service";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
+import { LoginService } from './landing-page/login.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,12 @@ import { UserListComponent } from './admin-panel/user-list/user-list.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [PostCallService,PostStoreService,PostSearchService],
+  providers: [
+    PostCallService,
+    PostStoreService,
+    PostSearchService,
+    LoginService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

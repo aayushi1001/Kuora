@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError,tap } from 'rxjs/operators';
 import { BehaviorSubject,throwError } from "rxjs";
+import { environment } from 'src/environments/environment';
 
 
 export interface AuthenticationResposeData{
@@ -24,7 +25,7 @@ export class GetVerificationListService {
 
   GetList(){
         
-    return this.http.get<AuthenticationResposeData>("http://localhost:3001/"+'verification_get').pipe(catchError(this.errorHandler),tap(responseData =>{
+    return this.http.get<AuthenticationResposeData>(environment.url_Api+'verification_get').pipe(catchError(this.errorHandler),tap(responseData =>{
         console.log(responseData);
     }))
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError,tap } from 'rxjs/operators';
 import { BehaviorSubject,throwError } from "rxjs";
+import { environment } from 'src/environments/environment';
 
 
 
@@ -9,6 +10,12 @@ export interface AuthenticationResposeData{
   code: number;
   message: string;
   
+}
+
+export interface ChangeUser{
+  n: number,
+  nModified: number,
+  ok: number
 }
 
 @Injectable({
@@ -25,7 +32,7 @@ export class VerifyRequestService {
     
     let body=[{"propName" : "verified","value":verified}];
     console.log("called");
-    return this.http.post<AuthenticationResposeData>("http://localhost:3001/register_update/"+email,body).pipe(catchError(this.errorHandler),tap(responseData =>{
+    return this.http.post<ChangeUser>(environment.url_Api+"register_update/"+email,body).pipe(catchError(this.errorHandler),tap(responseData =>{
         console.log(responseData);
     }))
 
@@ -36,7 +43,7 @@ ChangeUserStatus(status : string , email : string){
     
   let body=[{"propName" : "blocked","value":status}];
   console.log("called");
-  return this.http.post<AuthenticationResposeData>("http://localhost:3001/register_update/"+email,body).pipe(catchError(this.errorHandler),tap(responseData =>{
+  return this.http.post<ChangeUser>(environment.url_Api+"register_update/"+email,body).pipe(catchError(this.errorHandler),tap(responseData =>{
       console.log(responseData);
   }))
 

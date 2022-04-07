@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetUserListService } from 'src/app/resources/get-user-list.service';
 import { VerifyRequestService } from 'src/app/resources/verify-request.service';
+import {environment} from 'src/environments/environment'
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -11,7 +12,7 @@ export class UserListComponent implements OnInit {
   constructor(private getUsersService : GetUserListService, private verifyService : VerifyRequestService ) { }
   current_user:any;
 
-  http_link_prefix="http://localhost:3001/";
+  http_link_prefix=environment.url_Api;
 
   UsersList:any[]=[];
  ngOnInit(): void {
@@ -20,15 +21,34 @@ export class UserListComponent implements OnInit {
 
 BlockUser(user:any ){
     
-  this.verifyService.ChangeUserStatus("true",user.email).subscribe(responseData => {console.log("Blocked : "+responseData)});
-  this.getUsersService.GetList().subscribe(responseData => {this.UsersList=responseData.user});
+  this.verifyService.ChangeUserStatus("true",user.email).subscribe(responseData => {console.log("Blocked : "+responseData)
+  if(responseData.ok===1){
+      user.blocked=!user.blocked;
+  }
+  else{
+    console.log("Error in api");
+  }
+});
+
+  //this.getUsersService.GetList().subscribe(responseData => {this.UsersList=responseData.user});
 
 }
 
 UnblockUser(user:any ){
     
-  this.verifyService.ChangeUserStatus("false",user.email).subscribe(responseData => {console.log("Unblocked : "+responseData)});
-  this.getUsersService.GetList().subscribe(responseData => {this.UsersList=responseData.user});
+  this.verifyService.ChangeUserStatus("false",user.email).subscribe(responseData => {
+    
+    if(responseData.ok===1){
+      user.blocked=!user.blocked;
+  }
+  else{
+    console.log("Error in api");
+  }
+    console.log("Unblocked : "+responseData)
+  
+  
+  });
+  //this.getUsersService.GetList().subscribe(responseData => {this.UsersList=responseData.user});
 
 }
 

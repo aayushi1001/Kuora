@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError,tap } from 'rxjs/operators';
 import { BehaviorSubject,throwError } from "rxjs";
+import { environment } from 'src/environments/environment';
 
 
 
@@ -23,7 +24,7 @@ export class RemoveFromVerificationListService {
     
     
     console.log("called");
-    return this.http.delete<AuthenticationResposeData>("http://localhost:3001/verification/"+id).pipe(catchError(this.errorHandler),tap(responseData =>{
+    return this.http.delete<AuthenticationResposeData>(environment.url_Api+"verification/"+id).pipe(catchError(this.errorHandler),tap(responseData =>{
         console.log(responseData);
     }))
 

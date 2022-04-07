@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetVerificationListService } from 'src/app/resources/get-verification-list.service';
 import { VerifyRequestService } from 'src/app/resources/verify-request.service';
 import { RemoveFromVerificationListService } from 'src/app/resources/remove-from-verification-list.service';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-account-verification-list',
   templateUrl: './account-verification-list.component.html',
@@ -18,7 +18,9 @@ export class AccountVerificationListComponent implements OnInit {
   current_user_id="";
   current_user_docLink="";
 
-  http_link_prefix="http://localhost:3001/";
+  //http_link_prefix="http://localhost:3001/";
+
+  http_link_prefix=environment.url_Api;
 
   Requests:any[]=[];
  ngOnInit(): void {
@@ -51,16 +53,38 @@ export class AccountVerificationListComponent implements OnInit {
 
   ApproveRequest(request:any ){
     
-    this.verifyService.ApproveRequest("true",request.email).subscribe(responseData => {console.log("Posted : "+responseData)});
-    this.Requests = this.Requests.filter(function( obj ) {
-      return obj.email !== request.email;
-  });
+    this.verifyService.ApproveRequest("true",request.email).subscribe(responseData => {
+      if(responseData.ok===1){
+      console.log("Posted : "+responseData)
+      this.Requests = this.Requests.filter(function( obj ) {
+        return obj.email !== request.email;
+    });
+      }
+      else{
+        console.log("Error in api");
+      }
+    
+    });
+    
   this.RemoveVerification.RemoveRequest(request._id).subscribe(responseData => {console.log("Posted : "+responseData)});
   }
 
   DeclineRequest(user_email:any ){
     
-    this.verifyService.ApproveRequest("false",user_email).subscribe(responseData => {console.log("Posted : "+responseData)});
+    this.verifyService.ApproveRequest("false",user_email).subscribe(responseData => {
+
+      if(responseData.ok===1){
+        console.log("Posted : "+responseData)
+        this.Requests = this.Requests.filter(function( obj ) {
+          return obj.email !== user_email;
+      });
+        }
+        else{
+          console.log("Error in api");
+        }
+      
+
+    });
 
     this.current_user_message="";
     this.Requests = this.Requests.filter(function( obj ) {
