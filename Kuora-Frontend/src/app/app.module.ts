@@ -21,6 +21,8 @@ import { VerificationPortalComponent } from './main-page/verification-portal/ver
 import { PostQuestionComponent } from './main-page/display-area-page/post-question/post-question.component';
 import { SearchPageComponent } from './main-page/search-page/search-page.component';
 import {PostSearchService} from "./resources/post-search.service";
+import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
+import { UserListComponent } from './admin-panel/user-list/user-list.component';
 import { LoginService } from './landing-page/login.service';
 
 @NgModule({
@@ -37,7 +39,9 @@ import { LoginService } from './landing-page/login.service';
     ProfilePageComponent,
     VerificationPortalComponent,
     PostQuestionComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    AccountVerificationListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
