@@ -9,6 +9,8 @@ import { PostQuestionComponent } from './main-page/display-area-page/post-questi
 import { ProfilePageComponent } from './main-page/profile-page/profile-page.component';
 import { VerificationPortalComponent } from './main-page/verification-portal/verification-portal.component';
 import {SearchPageComponent} from "./main-page/search-page/search-page.component";
+import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
+import { UserListComponent } from './admin-panel/user-list/user-list.component';
 
 const routes: Routes = [
   {path : '' , redirectTo : '/landing-page' , pathMatch : 'full'},
@@ -25,6 +27,13 @@ const routes: Routes = [
       {path : 'verification-portal', component: VerificationPortalComponent}
     ]
   },
+  {
+    path: 'admin-panel', component:AccountVerificationListComponent
+  },
+  {
+    path: 'users-list', component:UserListComponent
+    
+  }
 ];
 
 @NgModule({
