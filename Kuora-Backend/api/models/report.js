@@ -8,6 +8,7 @@ const report = mongoose.Schema({
 const reportSchema = mongoose.Schema({
   postid: { type: String, required: true },
   title: { type: String, required: true },
+  post_email: { type: String, required: true },
   report: [report],
 });
 
