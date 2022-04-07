@@ -37,6 +37,7 @@ router.post("/", (req, res, next) => {
         const new_report = new Report({
           postid: req.body.postid,
           title: req.body.title,
+          post_email: req.body.post_email,
           report: newReport,
         });
 
