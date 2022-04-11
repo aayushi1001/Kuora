@@ -24,6 +24,7 @@ import {PostSearchService} from "./resources/post-search.service";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
 import { LoginService } from './landing-page/login.service';
+import { ReportedPostsComponent } from './reported-posts/reported-posts.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoginService } from './landing-page/login.service';
     PostQuestionComponent,
     SearchPageComponent,
     AccountVerificationListComponent,
-    UserListComponent
+    UserListComponent,
+    ReportedPostsComponent
   ],
   imports: [
     BrowserModule,
