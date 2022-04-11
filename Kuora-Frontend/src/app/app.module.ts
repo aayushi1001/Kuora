@@ -23,7 +23,7 @@ import { SearchPageComponent } from './main-page/search-page/search-page.compone
 import {PostSearchService} from "./resources/post-search.service";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
-import { LoginService } from './landing-page/login.service';
+import { LoginService } from './resources/login.service';
 
 @NgModule({
   declarations: [

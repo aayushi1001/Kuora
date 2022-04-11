@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service';
+import { LoginService } from '../../resources/login.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,6 +12,7 @@ import { LoginService } from '../login.service';
 
 export class LoginPageComponent implements OnInit {
   signinForm!: FormGroup;
+  errorResponse: string = '';
   constructor(private http : HttpClient,
               private router : Router, 
               private loginService: LoginService) { }
@@ -27,10 +28,11 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(){
     const userData = {
-      email: this.signinForm.controls['username'].value,
+      email: this.signinForm.controls['email'].value + "@kiit.ac.in",
       password: this.signinForm.controls['password'].value
     }
     this.loginService.userLogin(userData);
+    this.errorResponse = this.loginService.errorResponse;
   }
   
   GoToRegistration(){

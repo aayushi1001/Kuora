@@ -30,7 +30,8 @@
             [ngClass]="{'is-invalid' : signinForm.controls['password'].touched === true && signinForm.controls['password'].valid === false}">
         <div class="invalid-feedback">Please enter a valid password.</div>
     </div>
-    <button class="btn btn-primary my-3" type="submit" (click)="onSubmit()">Submit</button>
+    <button class="btn btn-primary my-3" type="submit" (click)="onSubmit()" [disabled]="!this.signinForm.valid">Submit</button>
     <h6 (click)="GoToRegistration()">Not Registered Yet? Register now!</h6>
+    <p *ngIf="errorResponse != ''"> {{ errorResponse }} </p>
 </form>
    
