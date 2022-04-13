@@ -9,7 +9,7 @@ interface LoginResponseData{
     code: number;
     message: string;
     token: string;
-}  
+}
 
 @Injectable()
 export class LoginService {
@@ -33,7 +33,7 @@ export class LoginService {
             if(responseData.code === 200){
                 this.activeUserDetails = jwt_decode(responseData.token);
                 console.log(this.activeUserDetails);
-                this.router.navigate(['/main-page']);
+                this.router.navigate(['/main-page/display-area/all']);
             } else {
                 this.errorResponse = responseData.message;
             }
