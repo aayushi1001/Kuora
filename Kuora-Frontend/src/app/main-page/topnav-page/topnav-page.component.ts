@@ -14,7 +14,7 @@ export class TopnavPageComponent implements OnInit {
   value:string="";
   activeUserEmail: string = '';
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
               private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -32,5 +32,8 @@ export class TopnavPageComponent implements OnInit {
 
   getActiveUserEmail(){
     // this.activeUserEmail = this.loginService.getActiveUserDetails().email;
+  }
+  logout(){
+    this.router.navigate(['/landing-page']);
   }
 }

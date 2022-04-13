@@ -16,6 +16,11 @@ export interface AuthenticationUserResposeData{
   user:{email:string ,pic:string }[];
 }
 
+export interface AuthenticationReport {
+  code: number;
+  message:string;
+}
+
 @Injectable()
 export class PostCallService {
 
@@ -28,6 +33,18 @@ export class PostCallService {
     postImg(email:string){
       return this.http.get<AuthenticationUserResposeData>(environment.url_Api+'register_get_email/'+email).pipe(catchError(this.errorHandler),tap(responseData =>{
 
+      }))
+    }
+    reportPost(postid:string , title:string, reason:string, reporter:string, post_email:string){
+     let body = {
+       "postid":postid,
+       "title":title,
+       "post_email":post_email,
+       "reason":reason,
+       "reporter":reporter
+     }
+     console.log(body);
+      return this.http.post<AuthenticationReport>(environment.url_Api+'report',body).pipe(catchError(this.errorHandler),tap(responseData =>{
       }))
     }
     private errorHandler(errRes: HttpErrorResponse){

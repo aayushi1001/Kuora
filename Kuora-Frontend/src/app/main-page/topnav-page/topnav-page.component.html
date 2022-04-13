@@ -25,7 +25,7 @@
     <ul class="dropdown-menu menu" aria-labelledby="dropdownMenuButton1">
         <li (click)="getActiveUserEmail()"><a routerLink="/main-page/profile-page/{{activeUserEmail}}" class="dropdown-item">Profile</a></li>
         <li><a routerLink="/main-page/verification-portal" class="dropdown-item">Verification Portal</a></li>
-        <li><a class="dropdown-item">Logout</a></li>
+        <li (click)="logout()"><a class="dropdown-item">Logout</a></li>
     </ul>
 </div>
 
