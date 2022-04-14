@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import { LoginService } from 'src/app/resources/login.service';
 
 @Component({
@@ -30,9 +30,6 @@ export class TopnavPageComponent implements OnInit {
     this.changeStatus.emit(this.status);
   }
 
-  getActiveUserEmail(){
-    // this.activeUserEmail = this.loginService.getActiveUserDetails().email;
-  }
   logout(){
     this.router.navigate(['/landing-page']);
   }

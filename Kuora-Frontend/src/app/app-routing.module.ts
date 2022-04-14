@@ -23,7 +23,7 @@ const routes: Routes = [
       {path : 'display-area/:category', component: DisplayAreaPageComponent},
       {path : 'search-page/:value', component: SearchPageComponent},
       {path : 'post-question', component: PostQuestionComponent},
-      {path : 'profile-page/:username', component: ProfilePageComponent},
+      {path : 'profile-page', component: ProfilePageComponent},
       {path : 'verification-portal', component: VerificationPortalComponent}
     ]
   },

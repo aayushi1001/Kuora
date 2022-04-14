@@ -24,6 +24,7 @@ import {PostSearchService} from "./resources/post-search.service";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
 import { LoginService } from './resources/login.service';
+import { UserProfile } from './resources/user-profile.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { LoginService } from './resources/login.service';
     PostStoreService,
     PostSearchService,
     LoginService,
+    UserProfile,
   ],
   bootstrap: [AppComponent]
 })

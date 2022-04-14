@@ -10,13 +10,47 @@
         </div>
         <div class="col-md-6 mt-3">
             <form>
-                Name : <input type="text" class="form-control my-2" [disabled]="!isEditableMode" value="Aayushi" placeholder="Aayushi">
-                Email : <input type="email" class="form-control my-2" [disabled]="!isEditableMode" value="1806274@kiit.ac.in">
-                Password : <input type="password" class="form-control my-2" [disabled]="!isEditableMode" value="1806274@kiit.ac.in">
-                Profile : <input type="text" disabled class="form-control my-2" value="Student" placeholder="Aayushi">
-                Verification Status : <input type="text" disabled class="form-control my-2" value="Not verified">
-                Description : <textarea row="2" [disabled]="!isEditableMode" class="form-control my-2">lorem ipsumjsbdvjhdbhvjbhsbchsdbvchdsvhdshjvhdjvbhjdvjhdbjhvbhjdbvjhdbxhjvbhx</textarea>
-                <button class="btn btn-primary d-inline m-3" (click)="onSubmit()" ng-if="!isEditableMode">Save</button>
+                Name : <input 
+                        type="text" 
+                        class="form-control my-2" 
+                        [disabled]="!isEditableMode" 
+                        value="{{ userDetails.name }}" 
+                        placeholder="Aayushi">
+
+                Email : <input 
+                        type="email" 
+                        class="form-control my-2" 
+                        [disabled]="!isEditableMode" 
+                        value="{{ userDetails.email }}">
+                        
+                Password : <input 
+                        type="password" 
+                        class="form-control my-2" 
+                        [disabled]="!isEditableMode" 
+                        value=" ********* ">
+
+                Profile : <input 
+                        type="text" 
+                        disabled 
+                        class="form-control my-2" 
+                        value="{{ userDetails.signupas }}" 
+                        placeholder="Aayushi">
+
+                Verification Status : <input 
+                        type="text" 
+                        disabled 
+                        class="form-control my-2" 
+                        value="{{ userDetails.verified }}">
+
+                Description : <textarea 
+                        row="2" 
+                        [disabled]="!isEditableMode" 
+                        class="form-control my-2">{{ userDetails.bio}}</textarea>
+
+                <button 
+                    class="btn btn-primary d-inline m-3" 
+                    (click)="onSubmit()" 
+                    ng-if="!isEditableMode">Save</button>
             </form>
         </div>
     </div>         

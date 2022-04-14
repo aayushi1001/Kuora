@@ -17,10 +17,13 @@ export class LoginService {
     private activeUserDetails: userDetails = {
         name: 'Undefined',
         email: 'Undefined',
-        profile: 'Undefined',
+        signupas: 'Undefined',
         bio: 'Undefined',
-        verified: 'Undefined'
+        verified: 'Undefined',
+        blocked: false,
+        pic: 'Undefined',
     };
+    
 
     errorResponse: string = '';
 
@@ -44,3 +47,5 @@ export class LoginService {
         return this.activeUserDetails;
     }
 }
+
+

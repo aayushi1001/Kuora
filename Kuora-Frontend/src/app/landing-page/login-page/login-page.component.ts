@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.signinForm = new FormGroup({
       'email': new FormControl(null, [Validators.required]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(8)])
+      'password': new FormControl(null, [Validators.required])
     });
   }
 
