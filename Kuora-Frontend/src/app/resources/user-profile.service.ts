@@ -12,6 +12,7 @@ interface UserFullDetails{
 
 @Injectable()
 export class UserProfile {
+  baseImgUrl:string=environment.url_Api;
     constructor(private http : HttpClient,
         private router : Router) { }
 
@@ -24,7 +25,7 @@ export class UserProfile {
             blocked: false,
             pic: 'Undefined',
         };
-        
+
 
     getUserProfileDetails(email: string){
         this.getProfileByEmail(email);
@@ -39,7 +40,14 @@ export class UserProfile {
                 this.userDetails.email = responseData.user[0].email;
                 this.userDetails.bio = responseData.user[0].bio;
                 this.userDetails.signupas = responseData.user[0].signupas;
-                this.userDetails.pic = responseData.user[0].pic;
+                if(responseData.user[0].pic)
+                {
+                  this.userDetails.pic = this.baseImgUrl+responseData.user[0].pic;
+                }
+                else
+                {
+                  this.userDetails.pic = 'https://t4.ftcdn.net/jpg/01/07/85/89/360_F_107858989_SJogeLthvc6WZ6lP6EsuLlxIRNtsz4JH.jpg';
+                }
                 this.userDetails.verified = responseData.user[0].verified;
                 this.userDetails.blocked = responseData.user[0].blocked;
 
