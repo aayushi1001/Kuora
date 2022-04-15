@@ -1,6 +1,6 @@
 <div class="card shadow-sm mt-3">
   <div class="card-body bg-white d-flex">
-    <img src="{{baseImgUrl}}" class="rounded-circle" height="6%" width="6%" alt="">
+    <img src="{{baseImgUrl}}"  routerLink="/main-page/profile-page" [queryParams]="{email: element.creator_email}" class="rounded-circle pointer" height="6%" width="6%" alt="">
     <div class="d-block ms-3">
       <h4>{{element.title}}</h4>
       <div class="d-flex">
