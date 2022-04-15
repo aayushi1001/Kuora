@@ -10,48 +10,48 @@
         </div>
         <div class="col-md-6 mt-3">
             <form>
-                Name : <input 
-                        type="text" 
-                        class="form-control my-2" 
-                        [disabled]="!isEditableMode" 
-                        value="{{ userDetails.name }}" 
-                        placeholder="Aayushi">
+                Name : <input
+                        type="text"
+                        class="form-control my-2"
+                        [disabled]="!isEditableMode"
+                        value="{{ userDetails.name }}"
+                        placeholder="Name">
 
-                Email : <input 
-                        type="email" 
-                        class="form-control my-2" 
-                        [disabled]="!isEditableMode" 
+                Email : <input
+                        type="email"
+                        class="form-control my-2"
+                        [disabled]="!isEditableMode"
                         value="{{ userDetails.email }}">
-                        
-                Password : <input 
-                        type="password" 
-                        class="form-control my-2" 
-                        [disabled]="!isEditableMode" 
+
+                Password : <input
+                        type="password"
+                        class="form-control my-2"
+                        [disabled]="!isEditableMode"
                         value=" ********* ">
 
-                Profile : <input 
-                        type="text" 
-                        disabled 
-                        class="form-control my-2" 
-                        value="{{ userDetails.signupas }}" 
-                        placeholder="Aayushi">
+                Profile : <input
+                        type="text"
+                        disabled
+                        class="form-control my-2"
+                        value="{{ userDetails.signupas }}"
+                        placeholder="Profile">
 
-                Verification Status : <input 
-                        type="text" 
-                        disabled 
-                        class="form-control my-2" 
+                Verification Status : <input
+                        type="text"
+                        disabled
+                        class="form-control my-2"
                         value="{{ userDetails.verified }}">
 
-                Description : <textarea 
-                        row="2" 
-                        [disabled]="!isEditableMode" 
+                Description : <textarea
+                        row="2"
+                        [disabled]="!isEditableMode"
                         class="form-control my-2">{{ userDetails.bio}}</textarea>
 
-                <button 
-                    class="btn btn-primary d-inline m-3" 
-                    (click)="onSubmit()" 
+                <button
+                    class="btn btn-primary d-inline m-3"
+                    (click)="onSubmit()"
                     ng-if="!isEditableMode">Save</button>
             </form>
         </div>
-    </div>         
+    </div>
 </div>
