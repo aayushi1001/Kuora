@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {TagsService} from "../../resources/tags.service";
 
 @Component({
   selector: 'app-sidenav-page',
@@ -8,9 +9,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SidenavPageComponent implements OnInit {
   @Input()
   status: boolean = true;
-  constructor() { }
+  Tags:  {label:string , icon:string} [] | undefined;
+  constructor(private tags: TagsService) { }
 
   ngOnInit(): void {
+    this.Tags = this.tags.getTagNames();
   }
 
 }

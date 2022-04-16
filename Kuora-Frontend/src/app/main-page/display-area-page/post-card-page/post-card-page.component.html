@@ -19,11 +19,11 @@
 
     <div class="btn btn-white d-flex">
       <i class="bi bi-hand-thumbs-up"></i>
-      <h6 class="ms-2"> Like 29*</h6>
+      <h6 class="ms-2"> Like {{voteCount}}*</h6>
     </div>
     <div class="btn btn-white d-flex">
       <i class="bi bi-card-list"></i>
-      <h6 class="ms-2"> Comment 4*</h6>
+      <h6 class="ms-2"> Comment {{commentCount}}*</h6>
     </div>
     <div class="btn btn-danger d-flex ms-auto" data-bs-toggle="modal" [attr.data-bs-target]="'#'+'modalLabel' + element.postid">
       <i class="bi bi-flag-fill me-2 text-light"></i>

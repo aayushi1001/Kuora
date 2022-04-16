@@ -9,7 +9,7 @@
         <div class="modal-body">
             <div class="form-group my-3">
                 <div class="input-group">
-                    <input 
+                    <input
                         type="text"
                         class="form-control"
                         formControlName="title"
@@ -19,28 +19,28 @@
                 <div class="invalid-feedback">Enter a valid title of your question.</div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="btn-group col-md-6 my-3">
                     <select
                         class="btn border dropdown-toggle"
                         formControlName="category"
                       >
-                        <option class="dropdown-item" *ngFor="let tag of Tags" [ngValue]="tag">
-                          {{ tag }}
+                        <option class="dropdown-item" *ngFor="let tag of Tags" [ngValue]="tag.label">
+                          {{ tag.label }}
                         </option>
                       </select>
                 </div>
             </div>
-            
+
             <div class="form-group my-3">
-                    <textarea 
-                        class="form-control" 
-                        id="question" 
+                    <textarea
+                        class="form-control"
+                        id="question"
                         rows="2"
                         formControlName="question"
                         placeholder="Write your question here"></textarea>
-            </div>            
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,5 +50,4 @@
     </div>
   </div>
 </form>
-  
-   
+
