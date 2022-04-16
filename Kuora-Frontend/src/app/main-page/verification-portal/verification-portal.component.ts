@@ -22,7 +22,18 @@ export class VerificationPortalComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    //TODO: If req already pending, can't send another request
+  }
+
+  onFileChange(event: any) {
+    try{
+      if (event.target.files && event.target.files.length) {
+        const file = event.target.files[0];
+        this.verificationForm.patchValue({
+          'verificationDocument': file
+        });
+      }
+    }
+    catch{}
   }
 
   onSubmit(){

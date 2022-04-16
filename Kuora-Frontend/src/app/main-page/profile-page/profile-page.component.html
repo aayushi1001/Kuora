@@ -1,6 +1,6 @@
 <div class="container-fluid overflow-hide m-4 p-4 mx-auto">
     <div class="col-md-12">
-        <button class="btn btn-danger d-inline m-3">Back</button>
+        <button class="btn btn-danger d-inline m-3" (click)="goToMainPage()">Back</button>
         <button class="btn btn-primary d-inline m-3" *ngIf="canEdit" (click)="editableMode()">Edit Profile</button>
     </div>
 

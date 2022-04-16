@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from '../../resources/user-profile.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { userDetails } from 'src/app/resources/user-details.model';
 import { LoginService } from 'src/app/resources/login.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -19,7 +19,8 @@ export class ProfilePageComponent implements OnInit {
 
   constructor(private userProfile: UserProfile,
               private route: ActivatedRoute,
-              private activeUser: LoginService ) { }
+              private activeUser: LoginService,
+              private router : Router ) { }
 
   ngOnInit(): void {
     this.userEmail = this.route.snapshot.queryParams['email'];
@@ -52,12 +53,14 @@ export class ProfilePageComponent implements OnInit {
   onSubmit(){
     this.isEditableMode = false;
     let password = this.editProfileForm?.controls['password'].value;
-    let userData = new FormData();
-    userData.append('name', this.editProfileForm?.controls['name'].value);
-    userData.append('bio', this.editProfileForm?.controls['bio'].value);
-
+    let userData:any = [
+      {"propName": "name", "value": this.editProfileForm?.controls['name'].value},
+      {"propName": "bio", "value": this.editProfileForm?.controls['bio'].value}
+    ]
     if(password !== "*******") {
-      userData.append('password', password);
+      userData.append({
+        "propName": "password", "value": password
+      });
     }
     this.userProfile.updateUserProfile(this.userEmail, userData);
     this.editProfileForm.disable();
@@ -65,6 +68,10 @@ export class ProfilePageComponent implements OnInit {
 
   getUserProfileDetails(email: any){
     this.userDetails = this.userProfile.getUserProfileDetails(email);
+  }
+
+  goToMainPage(){
+    this.router.navigate(['/main-page/display-area/all']);
   }
 
   PasswordValidation(control: FormControl){

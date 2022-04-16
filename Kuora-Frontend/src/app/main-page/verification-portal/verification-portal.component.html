@@ -14,7 +14,8 @@
                 class="form-control" 
                 type="file" 
                 id="formFile"
-                formControlName="verificationDocument">
+                formControlName="verificationDocument"
+                (change)="onFileChange($event)">
         </div>
         <button 
             type="submit" 
