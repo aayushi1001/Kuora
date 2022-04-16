@@ -10,6 +10,12 @@ interface UserFullDetails{
     user: userDetails[]
 }
 
+export interface UpdateProfile{
+    n: number,
+    nModified: number,
+    ok: number
+}
+
 @Injectable()
 export class UserProfile {
   baseImgUrl:string=environment.url_Api;
@@ -32,6 +38,10 @@ export class UserProfile {
         return this.userDetails;
     }
 
+    updateUserProfile(email: string, userData: any){
+        this.updateUserProfileByEmail(email, userData);
+    }
+
     private getProfileByEmail(email: string) {
         if(email != 'Undefined'){
             this.http.get<UserFullDetails>(environment.url_Api + 'register_get_email/'+ email)
@@ -51,6 +61,15 @@ export class UserProfile {
                 this.userDetails.verified = responseData.user[0].verified;
                 this.userDetails.blocked = responseData.user[0].blocked;
 
+            });
+        }
+    }
+
+    private updateUserProfileByEmail(email: string, userData: any){
+        if(email != 'Undefined'){
+            this.http.post<UpdateProfile>(environment.url_Api + 'register_update/'+ email, userData)
+            .subscribe(responseData => {
+                console.log(responseData);
             });
         }
     }
