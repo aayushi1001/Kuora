@@ -25,6 +25,7 @@ import { AccountVerificationListComponent } from './admin-panel/account-verifica
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
 import { LoginService } from './resources/login.service';
 import { UserProfile } from './resources/user-profile.service';
+import { PostQuestion } from './resources/post-question.service';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { UserProfile } from './resources/user-profile.service';
     PostSearchService,
     LoginService,
     UserProfile,
+    PostQuestion
   ],
   bootstrap: [AppComponent]
 })

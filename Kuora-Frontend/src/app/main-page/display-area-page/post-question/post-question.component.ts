@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/resources/login.service';
+import { PostQuestion } from 'src/app/resources/post-question.service';
 
 @Component({
   selector: 'app-post-question',
@@ -9,8 +11,22 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class PostQuestionComponent implements OnInit {
 
   postQuestionForm!: FormGroup;
-  constructor() { }
+  constructor(private loginService: LoginService,
+              private postQuestion: PostQuestion) { }
 
+  Tags: String[] = [
+    'Academic',
+    'KIIT Campus',
+    'Sports',
+    'Internship',
+    'Job',
+    'Higher Education',
+    'Student Society',
+    'Hackathons',
+    'Hostel',
+    'Training & Placement',
+    'Others'
+  ];
 
   ngOnInit(): void {
     this.postQuestionForm = new FormGroup({
@@ -21,7 +37,16 @@ export class PostQuestionComponent implements OnInit {
   }
 
   onSubmit(){
-
+    const postData = {
+      creator_email: this.loginService.getActiveUserDetails().email,
+      title: this.postQuestionForm.controls['title'].value,
+      tag: this.postQuestionForm.controls['category'].value,
+      article: this.postQuestionForm.controls['question'].value,
+      verified: this.loginService.getActiveUserDetails().verified
+    }
+    let res: number = this.postQuestion.postQuestion(postData);
+    if(res == 200){
+      this.postQuestionForm.reset();
+    }
   }
-
 }
