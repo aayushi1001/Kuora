@@ -19,6 +19,8 @@ export class PostCardPageComponent implements OnInit {
   modalId:string="#reportModal";
   voteCount:number=0;
   vote:{voter_email: string, post_id: string, rating: number}[]=[];
+  myVote:{voter_email: string, post_id: string, rating: number}[]=[];
+  checkVote = false;
   commentCount:number=0;
   comment:{comment_email: string, post_id: string, commenttxt: string}[]=[];
   constructor(private postCallService: PostCallService, private loginService: LoginService, private voteService: VoteService, private commentService: CommentService) { }
@@ -58,6 +60,15 @@ export class PostCardPageComponent implements OnInit {
       }
     )
 
+    this.voteService.voteSessionId(this.element.postid,this.loginService.getActiveUserDetails().email).subscribe(responseData =>{
+      if(responseData.code===200){
+        this.myVote = responseData.vote;
+        if(this.myVote.length>0)
+        {
+          this.checkVote = true;
+        }
+      }
+    })
 
 
   }
@@ -91,6 +102,17 @@ export class PostCardPageComponent implements OnInit {
         console.log("Comment Success");
       }
     })
+  }
+  voteCall()
+  {
+    if(!this.checkVote) {
+      this.voteService.votePostSession(this.loginService.getActiveUserDetails().email, this.element.postid).subscribe(responseData => {
+        if (responseData.code === 200) {
+          this.checkVote = true;
+          this.voteCount++;
+        }
+      })
+    }
   }
 
 }
