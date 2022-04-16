@@ -17,8 +17,12 @@
   </div>
   <div class="card-footer d-flex bg-white">
 
-    <div class="btn btn-white d-flex">
+    <div *ngIf="!checkVote" class="btn btn-white d-flex" (click)="voteCall()">
       <i class="bi bi-hand-thumbs-up"></i>
+      <h6 class="ms-2"> Like {{voteCount}}*</h6>
+    </div>
+    <div *ngIf="checkVote" class="btn btn-white d-flex" (click)="voteCall()">
+      <i class="bi bi-hand-thumbs-up-fill"></i>
       <h6 class="ms-2"> Like {{voteCount}}*</h6>
     </div>
     <div class="btn btn-white d-flex">
