@@ -22,7 +22,13 @@ export class TopnavPageComponent implements OnInit {
   }
 
   search(){
-    this.router.navigate(['main-page/search-page/'+this.value]);
+    if(this.value === '')
+    {
+      this.router.navigate(['main-page/search-page/.-all-']);
+    }
+    else {
+      this.router.navigate(['main-page/search-page/' + this.value]);
+    }
   }
 
   sidebar_toggle(){

@@ -3,6 +3,8 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/resources/login.service';
 import { PostQuestion } from 'src/app/resources/post-question.service';
 import { TagsService } from 'src/app/resources/tags.service';
+import {PostStoreService} from "../../../resources/post-store.service";
+import {Post} from "../../../resources/post.model";
 
 @Component({
   selector: 'app-post-question',
@@ -12,10 +14,11 @@ import { TagsService } from 'src/app/resources/tags.service';
 export class PostQuestionComponent implements OnInit {
 
   postQuestionForm!: FormGroup;
-  Tags: String[] | undefined;
+  Tags:  {label:string , icon:string} [] | undefined;
   constructor(private loginService: LoginService,
               private postQuestion: PostQuestion,
-              private tags: TagsService) { }
+              private tags: TagsService,
+              private poststoreService:PostStoreService) { }
 
   ngOnInit(): void {
     this.postQuestionForm = new FormGroup({
@@ -34,9 +37,13 @@ export class PostQuestionComponent implements OnInit {
       article: this.postQuestionForm.controls['question'].value,
       verified: this.loginService.getActiveUserDetails().verified
     }
-    let res: number = this.postQuestion.postQuestion(postData);
-    if(res == 200){
-      this.postQuestionForm.reset();
-    }
+    this.postQuestion.postQuestion(postData).subscribe(responseData => {
+      if(responseData.code === 200){
+        this.postQuestionForm.reset();
+        if(responseData.Post)
+          this.poststoreService.addPost(responseData.Post);
+      }
+    });
+
   }
 }

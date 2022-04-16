@@ -5,46 +5,12 @@
                     <i class="bi bi-house-door-fill"></i>
                     <span class="title1">All</span>
                 </a></li>
-            <li><a routerLink="/main-page/display-area/academic">
-                    <i class="bi bi-journal-bookmark"></i>
-                    <span class="title1">Academic</span>
-            </a></li>
-            <li><a routerLink="/main-page/display-area/internship">
-                    <i class="bi bi-pc-display"></i>
-                    <span class="title1">Internship</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/job">
-                    <i class="bi bi-tools"></i>
-                    <span class="title1">Job Opportunity</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/higherEducation">
-                    <i class="bi bi-mortarboard-fill"></i>
-                    <span class="title1">Higher Education</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/societies">
-                    <i class="bi bi-music-note-list"></i>
-                    <span class="title1">Student Societies</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/hackathons">
-                    <i class="bi bi-laptop-fill"></i>
-                    <span class="title1">Hackathons</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/sports">
-                    <i class="bi bi-controller"></i>
-                    <span class="title1">Sports</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/hostel">
-                    <i class="bi bi-building"></i>
-                    <span class="title1">Hostel</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/training_placement">
-                    <i class="bi bi-briefcase-fill"></i>
-                    <span class="title1">Training And Placement</span>
-                </a></li>
-            <li><a routerLink="/main-page/display-area/others">
-                  <i class="bi bi-boxes"></i>
-                  <span class="title1">Others</span>
-                </a></li>
+            <li *ngFor="let tag of Tags">
+              <a routerLink="/main-page/display-area/{{tag.label}}">
+                <i class="{{tag.icon}}"></i>
+                <span class="title1">{{tag.label}}</span>
+              </a>
+            </li>
             <li><a >
                   <i class="bi bi-geo-alt-fill"></i>
                   <span class="title1">Maps</span>

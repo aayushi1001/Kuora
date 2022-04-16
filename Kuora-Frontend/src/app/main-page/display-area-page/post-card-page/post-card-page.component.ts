@@ -3,6 +3,8 @@ import {Post} from "../../../resources/post.model";
 import {environment} from 'src/environments/environment'
 import {PostCallService} from "../../../resources/post-call.service";
 import {LoginService} from "../../../resources/login.service";
+import {VoteService} from "../../../resources/vote.service";
+import {CommentService} from "../../../resources/comment.service";
 @Component({
   selector: 'app-post-card-page',
   templateUrl: './post-card-page.component.html',
@@ -15,7 +17,11 @@ export class PostCardPageComponent implements OnInit {
   baseImgUrl:string=environment.url_Api;
   reason:string="";
   modalId:string="#reportModal";
-  constructor(private postCallService: PostCallService, private loginService: LoginService) { }
+  voteCount:number=0;
+  vote:{voter_email: string, post_id: string, rating: number}[]=[];
+  commentCount:number=0;
+  comment:{comment_email: string, post_id: string, commenttxt: string}[]=[];
+  constructor(private postCallService: PostCallService, private loginService: LoginService, private voteService: VoteService, private commentService: CommentService) { }
 
   ngOnInit(): void {
     this.postCallService.postImg(this.element.creator_email).subscribe(responseData => {
@@ -35,6 +41,24 @@ export class PostCardPageComponent implements OnInit {
       errorMessage=>{
         console.log(errorMessage);
       })
+
+    this.commentService.commentSession(this.element.postid).subscribe(responseData => {
+        if(responseData.code===200){
+          this.comment= responseData.comment;
+          this.commentCount=this.comment.length;
+        }
+      }
+    )
+
+    this.voteService.voteSession(this.element.postid).subscribe(responseData => {
+        if(responseData.code===200){
+          this.vote= responseData.vote;
+          this.voteCount=this.vote.length;
+        }
+      }
+    )
+
+
 
   }
 
@@ -59,6 +83,14 @@ export class PostCardPageComponent implements OnInit {
     else{
       console.log("Fail Report");
     }
+  }
+  commentCall(comment:string)
+  {
+    this.commentService.commentPostSession(this.loginService.getActiveUserDetails().email,this.element.postid,comment).subscribe(responseData =>{
+      if(responseData.code===200){
+        console.log("Comment Success");
+      }
+    })
   }
 
 }

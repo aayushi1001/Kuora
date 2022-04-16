@@ -27,6 +27,8 @@ import { LoginService } from './resources/login.service';
 import { UserProfile } from './resources/user-profile.service';
 import { PostQuestion } from './resources/post-question.service';
 import { TagsService } from './resources/tags.service';
+import {VoteService} from "./resources/vote.service";
+import {CommentService} from "./resources/comment.service";
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { TagsService } from './resources/tags.service';
     LoginService,
     UserProfile,
     PostQuestion,
-    TagsService
+    TagsService,
+    VoteService,
+    CommentService
   ],
   bootstrap: [AppComponent]
 })
