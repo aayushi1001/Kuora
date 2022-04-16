@@ -26,6 +26,7 @@ import { UserListComponent } from './admin-panel/user-list/user-list.component';
 import { LoginService } from './resources/login.service';
 import { UserProfile } from './resources/user-profile.service';
 import { PostQuestion } from './resources/post-question.service';
+import { TagsService } from './resources/tags.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { PostQuestion } from './resources/post-question.service';
     PostSearchService,
     LoginService,
     UserProfile,
-    PostQuestion
+    PostQuestion,
+    TagsService
   ],
   bootstrap: [AppComponent]
 })

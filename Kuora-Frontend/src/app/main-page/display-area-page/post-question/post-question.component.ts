@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/resources/login.service';
 import { PostQuestion } from 'src/app/resources/post-question.service';
+import { TagsService } from 'src/app/resources/tags.service';
 
 @Component({
   selector: 'app-post-question',
@@ -11,29 +12,18 @@ import { PostQuestion } from 'src/app/resources/post-question.service';
 export class PostQuestionComponent implements OnInit {
 
   postQuestionForm!: FormGroup;
+  Tags: String[] | undefined;
   constructor(private loginService: LoginService,
-              private postQuestion: PostQuestion) { }
-
-  Tags: String[] = [
-    'Academic',
-    'KIIT Campus',
-    'Sports',
-    'Internship',
-    'Job',
-    'Higher Education',
-    'Student Society',
-    'Hackathons',
-    'Hostel',
-    'Training & Placement',
-    'Others'
-  ];
+              private postQuestion: PostQuestion,
+              private tags: TagsService) { }
 
   ngOnInit(): void {
     this.postQuestionForm = new FormGroup({
       'title': new FormControl(null, [Validators.required]),
       'category': new FormControl(null, [Validators.required]),
       'question': new FormControl(null, [Validators.required])
-    })
+    });
+    this.Tags = this.tags.getTagNames();
   }
 
   onSubmit(){
