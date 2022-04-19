@@ -13,7 +13,7 @@ export interface AuthenticationResposeData{
 export interface AuthenticationUserResposeData{
   code: number;
   message: string;
-  user:{email:string ,pic:string }[];
+  user:{email:string ,pic:string, verified:boolean }[];
 }
 
 export interface AuthenticationReport {

@@ -21,6 +21,7 @@ export class PostCardPageComponent implements OnInit {
   vote:{voter_email: string, post_id: string, rating: number}[]=[];
   myVote:{voter_email: string, post_id: string, rating: number}[]=[];
   checkVote = false;
+  checkComment = false;
   commentCount:number=0;
   comment:{comment_email: string, post_id: string, commenttxt: string}[]=[];
   constructor(private postCallService: PostCallService, private loginService: LoginService, private voteService: VoteService, private commentService: CommentService) { }
@@ -113,6 +114,10 @@ export class PostCardPageComponent implements OnInit {
         }
       })
     }
+  }
+
+  commentToggle(){
+    this.checkComment = !this.checkComment;
   }
 
 }

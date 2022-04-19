@@ -29,6 +29,7 @@ import { PostQuestion } from './resources/post-question.service';
 import { TagsService } from './resources/tags.service';
 import {VoteService} from "./resources/vote.service";
 import {CommentService} from "./resources/comment.service";
+import { CommentCardComponent } from './main-page/display-area-page/post-card-page/comment-card/comment-card.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {CommentService} from "./resources/comment.service";
     PostQuestionComponent,
     SearchPageComponent,
     AccountVerificationListComponent,
-    UserListComponent
+    UserListComponent,
+    CommentCardComponent
   ],
   imports: [
     BrowserModule,
