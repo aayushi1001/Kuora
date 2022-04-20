@@ -16,6 +16,7 @@ export class PostCardPageComponent implements OnInit {
 
   baseImgUrl:string=environment.url_Api;
   reason:string="";
+  commenttxt:string="";
   modalId:string="#reportModal";
   voteCount:number=0;
   vote:{voter_email: string, post_id: string, rating: number}[]=[];
@@ -70,8 +71,6 @@ export class PostCardPageComponent implements OnInit {
         }
       }
     })
-
-
   }
 
   report(ele:Post)
@@ -96,11 +95,14 @@ export class PostCardPageComponent implements OnInit {
       console.log("Fail Report");
     }
   }
-  commentCall(comment:string)
+  commentCall()
   {
-    this.commentService.commentPostSession(this.loginService.getActiveUserDetails().email,this.element.postid,comment).subscribe(responseData =>{
+    this.commentService.commentPostSession(this.loginService.getActiveUserDetails().email,this.element.postid,this.commenttxt).subscribe(responseData =>{
       if(responseData.code===200){
         console.log("Comment Success");
+        this.comment.push({comment_email: this.loginService.getActiveUserDetails().email,post_id: this.element.postid,commenttxt:this.commenttxt});
+        this.commenttxt = "";
+        console.log(this.comment);
       }
     })
   }
