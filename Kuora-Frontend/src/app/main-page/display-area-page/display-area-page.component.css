@@ -1,5 +1,15 @@
+/**
+ * @Author: Ayush Ranjan
+ * @Date:   2022-04-03 21:39:50
+ * @Last Modified by:   Ayush Ranjan
+ * @Last Modified time: 2022-04-18 16:38:52
+ */
 .filter {
   position: fixed;
-  top:60px;
+  top: 60px;
   right: 5px;
+}
+.main-area {
+  position: absolute;
+  left: 7%;
 }

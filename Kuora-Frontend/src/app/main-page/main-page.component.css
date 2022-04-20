@@ -1,3 +1,14 @@
+/**
+ * @Author: Ayush Ranjan
+ * @Date:   2022-04-03 21:39:50
+ * @Last Modified by:   Ayush Ranjan
+ * @Last Modified time: 2022-04-18 16:39:47
+ */
+.main-page {
+  height: 100vh;
+  background-color: rgba(2, 94, 9, 0.164);
+  background-attachment: fixed;
+}
 .display-area {
   margin-left: 270px;
 }

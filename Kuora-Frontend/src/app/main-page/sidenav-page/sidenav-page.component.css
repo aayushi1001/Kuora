@@ -1,3 +1,9 @@
+/**
+ * @Author: Ayush Ranjan
+ * @Date:   2022-04-03 21:39:50
+ * @Last Modified by:   Ayush Ranjan
+ * @Last Modified time: 2022-04-18 21:58:52
+ */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap");
 
 * {
@@ -13,7 +19,7 @@
   position: fixed;
   top: 65px;
   left: 10px;
-  background: var(--primary-color);
+  background-color: rgb(0, 82, 0);
   width: 250px;
   height: calc(100% - 74px);
   transition: all 0.3s ease;
@@ -67,7 +73,7 @@
 
 .wrapper1 .sidebar1 ul li a:hover,
 .wrapper1 .sidebar1 ul li a.active {
-  background: var(--primary-hover);
+  background: rgb(1, 197, 1);
   color: #fff;
   font-weight: bold;
 }

@@ -1,9 +1,17 @@
+/**
+ * @Author: Ayush Ranjan
+ * @Date:   2022-04-03 21:39:50
+ * @Last Modified by:   Ayush Ranjan
+ * @Last Modified time: 2022-04-18 16:41:02
+ */
 .profile-picture {
-    height: 20em;
-    width: 20em;
+  height: 15em;
+  width: 15em;
+  border: 3px solid white;
+  border-radius: 8em;
 }
 
 .container-fluid {
-    height: 50vh;
-    width: 50vw;
+  height: 50vh;
+  width: 50vw;
 }

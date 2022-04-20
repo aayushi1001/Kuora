@@ -1,29 +1,50 @@
-
+<!-- 
+  @Author: Ayush Ranjan
+  @Date:   2022-04-18 16:10:08
+  @Last Modified by:   Ayush Ranjan
+  @Last Modified time: 2022-04-18 22:13:38
+-->
 <div class="dropdown filter float-end m-2">
-  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button
+    class="btn btn-primary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton1"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
     Filter
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" (click)="onfilter('all')" >All</a></li>
-    <li><a class="dropdown-item" (click)="onfilter('verified')" >Verified Only</a></li>
-    <li><a class="dropdown-item" (click)="onfilter('unverified')" >UnVerified Only</a></li>
+    <li><a class="dropdown-item" (click)="onfilter('all')">All</a></li>
+    <li>
+      <a class="dropdown-item" (click)="onfilter('verified')">Verified Only</a>
+    </li>
+    <li>
+      <a class="dropdown-item" (click)="onfilter('unverified')"
+        >UnVerified Only</a
+      >
+    </li>
   </ul>
 </div>
 <div class="container mt-2" align="center">
-<div class="card shadow w-75">
-  <div class="card-body bg-white rounded">
-    <h5 class="card-title">Please Ask Us Any Question</h5>
-    <a  class="btn btn-primary float-center mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Create</a>
-    <app-post-question></app-post-question>
+  <div class="card shadow w-75">
+    <div class="card-body bg-white rounded">
+      <h5 class="card-title">Please Ask Us Any Question</h5>
+      <a
+        class="btn btn-primary float-center mt-2"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        >Create</a
+      >
+      <app-post-question></app-post-question>
+    </div>
   </div>
-</div>
 </div>
 
 <div class="container mt-5">
-<!--  <ul>-->
-<!--    <li *ngFor="let val of post" >{{val.title}}</li>-->
-<!--  </ul>-->
-  <app-post-card-page *ngFor="let val of post" [element]= "val" > </app-post-card-page>
+  <!--  <ul>-->
+  <!--    <li *ngFor="let val of post" >{{val.title}}</li>-->
+  <!--  </ul>-->
+  <app-post-card-page *ngFor="let val of post" [element]="val">
+  </app-post-card-page>
 </div>
-
-
