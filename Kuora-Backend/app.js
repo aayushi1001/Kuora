@@ -34,6 +34,8 @@ const verify_Get_Routes = require("./api/routes/verification_get");
 const report_Routes = require("./api/routes/report");
 const report_Get_Routes = require("./api/routes/report_get")
 
+const update_user_img_Route = require("./api/routes/update_user_img")
+
 
 
 const search_Routes = require("./api/routes/search_bar");
@@ -120,6 +122,7 @@ app.use("/verification",verify_Routes);
 app.use("/verification_get", verify_Get_Routes);
 app.use("/report",report_Routes);
 app.use("/report_get", report_Get_Routes);
+app.use("/update_user_img",update_user_img_Route);
 
 //app.use('/',);
 
