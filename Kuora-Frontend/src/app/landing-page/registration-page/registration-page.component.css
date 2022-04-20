@@ -1,1 +1,21 @@
+/**
+ * @Author: Ayush Ranjan
+ * @Date:   2022-04-03 21:39:50
+ * @Last Modified by:   Ayush Ranjan
+ * @Last Modified time: 2022-04-18 16:38:22
+ */
+form {
+  margin-top: -50px;
 
+  height: 80vh;
+  font-size: 13px;
+}
+
+label {
+  color: rgb(1, 97, 1);
+}
+@media screen and (max-width: 520px) {
+  form {
+    height: 100vh;
+  }
+}
