@@ -23,6 +23,7 @@ import { SearchPageComponent } from './main-page/search-page/search-page.compone
 import {PostSearchService} from "./resources/post-search.service";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
+import { ReportedPostsComponent } from './admin-panel/reported-posts/reported-posts.component';
 import { LoginService } from './resources/login.service';
 import { UserProfile } from './resources/user-profile.service';
 import { PostQuestion } from './resources/post-question.service';
@@ -50,6 +51,7 @@ import { WildRouteComponent } from './wild-route-component/wild-route.component'
     SearchPageComponent,
     AccountVerificationListComponent,
     UserListComponent,
+    ReportedPostsComponent,
     CommentCardComponent,
     WildRouteComponent
   ],
