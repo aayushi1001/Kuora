@@ -2,7 +2,7 @@
   @Author: Ayush Ranjan
   @Date:   2022-04-18 16:10:08
   @Last Modified by:   Ayush Ranjan
-  @Last Modified time: 2022-04-18 22:09:43
+  @Last Modified time: 2022-04-22 13:34:07
 -->
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
   <!-- <div formGroupName="userData"> -->
@@ -24,7 +24,7 @@
     />
     <div class="invalid-feedback">Username cannot be empty</div>
   </div>
-  <span class="form-label d-block" style="color: rgb(1, 97, 1)"
+  <span class="form-label d-block" style="color: rgb(0, 11, 136)"
     >Register as:
   </span>
   <div
@@ -102,7 +102,9 @@
       formControlName="description"
     ></textarea>
   </div>
-  <h6 (click)="GoToLogin()">Already Registered? Login now!</h6>
+  <h6 class="login-page" (click)="GoToLogin()">
+    Already Registered? Login now!
+  </h6>
   <button
     class="btn btn-primary my-3"
     [disabled]="!this.signupForm.valid"

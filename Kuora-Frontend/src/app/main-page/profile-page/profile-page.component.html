@@ -2,7 +2,7 @@
   @Author: Ayush Ranjan
   @Date:   2022-04-18 16:10:08
   @Last Modified by:   Ayush Ranjan
-  @Last Modified time: 2022-04-18 22:51:22
+  @Last Modified time: 2022-04-23 12:47:49
 -->
 <div class="container-fluid overflow-hide m-4 p-4 mx-auto">
   <!-- <div class="col-md-12">
@@ -17,13 +17,7 @@
         class="img-fluid profile-picture"
         alt="Responsive image"
       /><br />
-      <button
-        class="btn btn-primary d-inline m-3"
-        (click)="onSubmit()"
-        *ngIf="isEditableMode"
-      >
-        Save
-      </button>
+
       <button
         class="btn btn-primary d-inline m-3"
         *ngIf="canEdit"
@@ -81,6 +75,13 @@
         <textarea row="2" class="form-control my-2" formControlName="bio">{{
           userDetails.bio
         }}</textarea>
+        <button
+          class="btn btn-primary d-inline m-3"
+          (click)="onSubmit()"
+          *ngIf="isEditableMode"
+        >
+          Save
+        </button>
       </form>
     </div>
   </div>
