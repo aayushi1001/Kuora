@@ -23,7 +23,7 @@ export class LoginService {
         blocked: false,
         pic: 'Undefined',
     };
-    
+
 
     errorResponse: string = '';
 
@@ -45,6 +45,16 @@ export class LoginService {
 
     getActiveUserDetails(){
         return this.activeUserDetails;
+    }
+
+    unsetActiveUserDetails(){
+      this.activeUserDetails.name = 'Undefined';
+      this.activeUserDetails.email = 'Undefined';
+      this.activeUserDetails.signupas = 'Undefined';
+      this.activeUserDetails.bio = 'Undefined';
+      this.activeUserDetails.verified = 'Undefined';
+      this.activeUserDetails.blocked = false;
+      this.activeUserDetails.pic = 'Undefined';
     }
 }
 
