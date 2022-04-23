@@ -24,9 +24,15 @@ import {PostSearchService} from "./resources/post-search.service";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
 import { ReportedPostsComponent } from './admin-panel/reported-posts/reported-posts.component';
-
 import { LoginService } from './resources/login.service';
-
+import { UserProfile } from './resources/user-profile.service';
+import { PostQuestion } from './resources/post-question.service';
+import { TagsService } from './resources/tags.service';
+import {VoteService} from "./resources/vote.service";
+import {CommentService} from "./resources/comment.service";
+import { CommentCardComponent } from './main-page/display-area-page/post-card-page/comment-card/comment-card.component';
+import { RouteActivate } from './resources/route-activate.service';
+import { WildRouteComponent } from './wild-route-component/wild-route.component'
 
 @NgModule({
   declarations: [
@@ -45,7 +51,9 @@ import { LoginService } from './resources/login.service';
     SearchPageComponent,
     AccountVerificationListComponent,
     UserListComponent,
-    ReportedPostsComponent
+    ReportedPostsComponent,
+    CommentCardComponent,
+    WildRouteComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +67,12 @@ import { LoginService } from './resources/login.service';
     PostStoreService,
     PostSearchService,
     LoginService,
+    UserProfile,
+    PostQuestion,
+    TagsService,
+    VoteService,
+    CommentService,
+    RouteActivate
   ],
   bootstrap: [AppComponent]
 })

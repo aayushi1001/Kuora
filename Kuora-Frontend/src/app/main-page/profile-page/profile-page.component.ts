@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfile } from '../../resources/user-profile.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { userDetails } from 'src/app/resources/user-details.model';
+import { LoginService } from 'src/app/resources/login.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-page',
@@ -8,19 +13,79 @@ import { Component, OnInit } from '@angular/core';
 export class ProfilePageComponent implements OnInit {
 
   isEditableMode: boolean = false;
-  constructor() { }
+  canEdit: boolean = false;
+  userEmail!: string;
+  editProfileForm!: FormGroup;
+
+  constructor(private userProfile: UserProfile,
+              private route: ActivatedRoute,
+              private activeUser: LoginService,
+              private router : Router ) { }
 
   ngOnInit(): void {
+    this.userEmail = this.route.snapshot.queryParams['email'];
+    this.getUserProfileDetails(this.userEmail);
+    if( this.userEmail === this.activeUser.getActiveUserDetails().email){
+      this.canEdit = true;
+      this.editProfileForm = new FormGroup({
+        'name': new FormControl({value: this.userDetails.name, disabled: !this.isEditableMode}, [Validators.required]),
+        'password': new FormControl({value: "*******", disabled: !this.isEditableMode}, [Validators.required, Validators.minLength(8), this.PasswordValidation]),
+        'bio': new FormControl({value: this.userDetails.bio, disabled: !this.isEditableMode}, [Validators.required])
+      });
+    }
   }
+
+  userDetails: userDetails = {
+    name: 'Undefined',
+    email: 'Undefined',
+    signupas: 'Undefined',
+    bio: 'Undefined',
+    verified: 'Undefined',
+    blocked: false,
+    pic: 'Undefined',
+  };
 
   editableMode(){
     this.isEditableMode = true;
+    this.editProfileForm.enable();
   }
 
   onSubmit(){
     this.isEditableMode = false;
+    let password = this.editProfileForm?.controls['password'].value;
+    let userData:any = [
+      {"propName": "name", "value": this.editProfileForm?.controls['name'].value},
+      {"propName": "bio", "value": this.editProfileForm?.controls['bio'].value}
+    ]
+    if(password !== "*******") {
+      userData.append({
+        "propName": "password", "value": password
+      });
+    }
+    this.userProfile.updateUserProfile(this.userEmail, userData);
+    this.editProfileForm.disable();
+  }
+
+  getUserProfileDetails(email: any){
+    this.userDetails = this.userProfile.getUserProfileDetails(email);
+  }
+
+  goToMainPage(){
+    this.router.navigate(['/main-page/display-area/all']);
+  }
+
+  PasswordValidation(control: FormControl){
+    let specialCharacter = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      if((control.value !== null) && (!specialCharacter.test(control.value.toString()) || !/\d/.test(control.value.toString()))){
+        return ({
+          'InvalidPassword' : true
+        });
+      } else{
+        return (null);
+      }
   }
 
   
 
 }
+
