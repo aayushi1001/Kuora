@@ -102,6 +102,7 @@ export class PostCardPageComponent implements OnInit {
         console.log("Comment Success");
         this.comment.push({comment_email: this.loginService.getActiveUserDetails().email,post_id: this.element.postid,commenttxt:this.commenttxt});
         this.commenttxt = "";
+        this.commentCount++;
         console.log(this.comment);
       }
     })
