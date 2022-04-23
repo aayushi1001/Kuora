@@ -11,6 +11,7 @@ import { VerificationPortalComponent } from './main-page/verification-portal/ver
 import {SearchPageComponent} from "./main-page/search-page/search-page.component";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
+import { ReportedPostsComponent } from './admin-panel/reported-posts/reported-posts.component';
 
 const routes: Routes = [
   {path : '' , redirectTo : '/landing-page' , pathMatch : 'full'},
@@ -32,6 +33,10 @@ const routes: Routes = [
   },
   {
     path: 'users-list', component:UserListComponent
+    
+  },
+  {
+    path: 'reported-posts', component:ReportedPostsComponent
     
   }
 ];

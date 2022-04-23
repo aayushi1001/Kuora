@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import {environment} from 'src/environments/environment';
 import {userDetails } from '../../resources/user-details.model';
-import { LoginService } from '../login.service';
+import { LoginService } from '../../resources/login.service';
 
 interface RegistrationResponseData{
   code: number;
@@ -63,7 +63,7 @@ export class RegistrationPageComponent implements OnInit {
         console.log(responseData);
         this.loginService.userLogin(LoginData);
       } else {
-        this.errorResponse = "This user cannot be registered";
+        this.errorResponse = responseData.message;
       }
     })
   }

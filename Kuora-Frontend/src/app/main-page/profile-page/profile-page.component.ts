@@ -21,4 +21,6 @@ export class ProfilePageComponent implements OnInit {
     this.isEditableMode = false;
   }
 
+  
+
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GetUserListService } from 'src/app/resources/get-user-list.service';
 import { VerifyRequestService } from 'src/app/resources/verify-request.service';
 import {environment} from 'src/environments/environment'
+
+// kuorateam@gmail.com
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',

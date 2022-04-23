@@ -76,5 +76,6 @@
     </div>
     <h6 (click)="GoToLogin()">Already Registered? Login now!</h6>
     <button class="btn btn-primary my-3" [disabled]="!this.signupForm.valid" type="submit">Submit</button>
+    <p *ngIf="errorResponse != ''"> {{ errorResponse }} </p>
 </form>
 
