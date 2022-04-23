@@ -37,6 +37,7 @@ export class TopnavPageComponent implements OnInit {
   }
 
   logout(){
+    this.loginService.unsetActiveUserDetails();
     this.router.navigate(['/landing-page']);
   }
 }
