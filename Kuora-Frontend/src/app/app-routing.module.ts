@@ -11,14 +11,27 @@ import { VerificationPortalComponent } from './main-page/verification-portal/ver
 import {SearchPageComponent} from "./main-page/search-page/search-page.component";
 import { AccountVerificationListComponent } from './admin-panel/account-verification-list/account-verification-list.component';
 import { UserListComponent } from './admin-panel/user-list/user-list.component';
+import { RouteActivate } from './resources/route-activate.service';
+import { WildRouteComponent } from './wild-route-component/wild-route.component';
 
 const routes: Routes = [
-  {path : '' , redirectTo : '/landing-page' , pathMatch : 'full'},
-  {path : 'landing-page' , component : LandingPageComponent, children: [
-    {path : 'login' , component : LoginPageComponent},
-    {path : 'registration' , component : RegistrationPageComponent}
-  ]},
-  {path : 'main-page' , component : MainPageComponent,
+  {
+    path : '' , 
+    redirectTo : '/landing-page' , 
+    pathMatch : 'full',
+  },
+  {
+    path : 'landing-page' , 
+    component : LandingPageComponent, 
+    children: [
+      {path : 'login' , component : LoginPageComponent},
+      {path : 'registration' , component : RegistrationPageComponent}
+    ]
+  },
+  {
+    path : 'main-page' , 
+    component : MainPageComponent,
+    canActivate: [RouteActivate],
     children:[
       {path : 'display-area/:category', component: DisplayAreaPageComponent},
       {path : 'search-page/:value', component: SearchPageComponent},
@@ -27,13 +40,10 @@ const routes: Routes = [
       {path : 'verification-portal', component: VerificationPortalComponent}
     ]
   },
-  {
-    path: 'admin-panel', component:AccountVerificationListComponent
-  },
-  {
-    path: 'users-list', component:UserListComponent
-    
-  }
+  { path: 'admin-panel', component:AccountVerificationListComponent },
+  { path: 'users-list', component:UserListComponent },
+  { path: 'not-found', component: WildRouteComponent },
+  { path : '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({

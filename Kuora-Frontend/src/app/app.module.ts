@@ -30,6 +30,8 @@ import { TagsService } from './resources/tags.service';
 import {VoteService} from "./resources/vote.service";
 import {CommentService} from "./resources/comment.service";
 import { CommentCardComponent } from './main-page/display-area-page/post-card-page/comment-card/comment-card.component';
+import { RouteActivate } from './resources/route-activate.service';
+import { WildRouteComponent } from './wild-route-component/wild-route.component'
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { CommentCardComponent } from './main-page/display-area-page/post-card-pa
     SearchPageComponent,
     AccountVerificationListComponent,
     UserListComponent,
-    CommentCardComponent
+    CommentCardComponent,
+    WildRouteComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { CommentCardComponent } from './main-page/display-area-page/post-card-pa
     PostQuestion,
     TagsService,
     VoteService,
-    CommentService
+    CommentService,
+    RouteActivate
   ],
   bootstrap: [AppComponent]
 })
