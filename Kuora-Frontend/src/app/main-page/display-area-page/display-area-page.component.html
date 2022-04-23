@@ -2,7 +2,7 @@
   @Author: Ayush Ranjan
   @Date:   2022-04-18 16:10:08
   @Last Modified by:   Ayush Ranjan
-  @Last Modified time: 2022-04-18 22:13:38
+  @Last Modified time: 2022-04-22 20:27:31
 -->
 <div class="dropdown filter float-end m-2">
   <button
@@ -26,16 +26,29 @@
     </li>
   </ul>
 </div>
-<div class="container mt-2" align="center">
-  <div class="card shadow w-75">
-    <div class="card-body bg-white rounded">
-      <h5 class="card-title">Please Ask Us Any Question</h5>
-      <a
-        class="btn btn-primary float-center mt-2"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-        >Create</a
-      >
+<div class="container post-question">
+  <div class="row">
+    <div class="col-md-5">
+      <img
+        class="background-img"
+        src="../../../assets/girl.jpg"
+        alt="girl.jpg"
+      />
+    </div>
+    <div class="col-md-7">
+      <p class="font-weight-light question">
+        HAVING LOTS OF QUESTIONS IN MIND?
+      </p>
+      <p class="sub-ques">
+        JUST ASK ANYTHING
+        <a
+          class="btn btn-primary float-center mt-2 create-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          >Ask a Question</a
+        >
+      </p>
+
       <app-post-question></app-post-question>
     </div>
   </div>

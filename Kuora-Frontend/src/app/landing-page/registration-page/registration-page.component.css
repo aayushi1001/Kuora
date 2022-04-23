@@ -2,7 +2,7 @@
  * @Author: Ayush Ranjan
  * @Date:   2022-04-03 21:39:50
  * @Last Modified by:   Ayush Ranjan
- * @Last Modified time: 2022-04-18 16:38:22
+ * @Last Modified time: 2022-04-20 23:12:37
  */
 form {
   margin-top: -50px;
@@ -12,7 +12,12 @@ form {
 }
 
 label {
-  color: rgb(1, 97, 1);
+  color: rgb(0, 11, 136);
+}
+.login-page {
+  font-size: 13px;
+  margin-top: 5px;
+  color: rgb(0, 11, 136);
 }
 @media screen and (max-width: 520px) {
   form {
