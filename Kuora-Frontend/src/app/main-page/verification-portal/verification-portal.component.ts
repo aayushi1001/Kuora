@@ -31,14 +31,12 @@ export class VerificationPortalComponent implements OnInit {
             break;
           }
         }
+        this.verificationForm = new FormGroup({
+          'reason': new FormControl({value: this.reason, disabled: !this.canApplyforVerification}, [Validators.required]),
+          'verificationDocument': new FormControl({value: null, disabled: !this.canApplyforVerification}, [Validators.required]),
+        });
       }
     );
-
-    this.verificationForm = new FormGroup({
-      'reason': new FormControl({value: this.reason, disabled: this.canApplyforVerification}, [Validators.required]),
-      'verificationDocument': new FormControl({value: null, disabled: this.canApplyforVerification}, [Validators.required]),
-    });
-
   }
 
   ngAfterViewInit(){
