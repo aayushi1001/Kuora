@@ -26,17 +26,18 @@ export class VerificationPortalComponent implements OnInit {
           let email = this.loginService.getActiveUserDetails().email;
           if(res.verification[req].email === email) {
             this.canApplyforVerification = false;
+            this.verificationForm.disable();
             this.reason = res.verification[req].request;
             console.log(res.verification[req].request);
             break;
           }
         }
-        this.verificationForm = new FormGroup({
-          'reason': new FormControl({value: this.reason, disabled: !this.canApplyforVerification}, [Validators.required]),
-          'verificationDocument': new FormControl({value: null, disabled: !this.canApplyforVerification}, [Validators.required]),
-        });
       }
     );
+    this.verificationForm = new FormGroup({
+      'reason': new FormControl({value: this.reason, disabled: !this.canApplyforVerification}, [Validators.required]),
+      'verificationDocument': new FormControl({value: null, disabled: !this.canApplyforVerification}, [Validators.required]),
+    });
   }
 
   ngAfterViewInit(){
@@ -67,5 +68,6 @@ export class VerificationPortalComponent implements OnInit {
     verificationDetails.append('documentPic', this.verificationForm.controls['verificationDocument'].value);
 
     this.sendRequest.sendVerificationRequest(verificationDetails);
+    this.verificationForm.disable();
   }
 }

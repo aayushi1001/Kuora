@@ -33,14 +33,16 @@ export class ProfilePageComponent implements OnInit {
         this.userDetails = a;
       }
     )
-    if( this.userEmail === this.activeUser.getActiveUserDetails().email){
-      this.canEdit = true;
+
+
       this.editProfileForm = new FormGroup({
         'name': new FormControl({value: this.userDetails.name, disabled: !this.isEditableMode}, [Validators.required]),
         'password': new FormControl({value: "*******", disabled: !this.isEditableMode}, [Validators.required, Validators.minLength(8), this.PasswordValidation]),
         'bio': new FormControl({value: this.userDetails.bio, disabled: !this.isEditableMode}, [Validators.required]),
         'pic': new FormControl(null)
       });
+    if( this.userEmail === this.activeUser.getActiveUserDetails().email){
+      this.canEdit = true;
     }
       this.profilePic.pictureUpdateListner().subscribe( picPath =>{
         this.userDetails.pic = picPath;
