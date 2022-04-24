@@ -1,4 +1,4 @@
-<!-- 
+<!--
   @Author: Ayush Ranjan
   @Date:   2022-04-18 16:10:08
   @Last Modified by:   Ayush Ranjan
@@ -13,11 +13,10 @@
   <div class="row border p-4 m-4">
     <div class="col-md-6">
       <img
-        src="{{ userDetails.pic }}"
+        src="http://localhost:3001/{{ userDetails.pic }}"
         class="img-fluid profile-picture"
         alt="Responsive image"
       /><br />
-
       <button
         class="btn btn-primary d-inline m-3"
         *ngIf="canEdit"
@@ -29,12 +28,19 @@
 
     <div class="col-md-6 mt-3">
       <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+        <input
+          type="file"
+          id="formFile"
+          formControlName="pic"
+          (change)="onFileChange($event)"
+          *ngIf="isEditableMode">
+
         Name :
         <input
           type="text"
           class="form-control my-2"
-          value="{{ userDetails.name }}"
           placeholder="Name"
+          [ngModel]="userDetails.name"
           formControlName="name"
         />
 
@@ -72,9 +78,9 @@
         />
 
         Description :
-        <textarea row="2" class="form-control my-2" formControlName="bio">{{
-          userDetails.bio
-        }}</textarea>
+        <textarea row="2" class="form-control my-2" formControlName="bio" [ngModel]="userDetails.bio">
+          {{ userDetails.bio }}
+        </textarea>
         <button
           class="btn btn-primary d-inline m-3"
           (click)="onSubmit()"

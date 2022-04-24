@@ -34,6 +34,7 @@ import { CommentCardComponent } from './main-page/display-area-page/post-card-pa
 import { RouteActivate } from './resources/route-activate.service';
 import { WildRouteComponent } from './wild-route-component/wild-route.component'
 import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
+import { ProfilePictureService } from "./resources/profile-picture.service";
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
     TagsService,
     VoteService,
     CommentService,
-    RouteActivate
+    RouteActivate,
+    ProfilePictureService
   ],
   bootstrap: [AppComponent]
 })

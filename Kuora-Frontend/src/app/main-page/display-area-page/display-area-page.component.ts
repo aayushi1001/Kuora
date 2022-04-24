@@ -32,7 +32,7 @@ export class DisplayAreaPageComponent implements OnInit {
     }
   })
 
-    this.postsSub= this.poststoreService.getPostUpdateListner().subscribe((posts:Post[])=>{
+    this.postsSub = this.poststoreService.getPostUpdateListner().subscribe((posts:Post[])=>{
       // this.post=posts;
       if(this.category === "all")
       {
