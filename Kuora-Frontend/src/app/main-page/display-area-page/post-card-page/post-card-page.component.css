@@ -2,11 +2,11 @@
  * @Author: Ayush Ranjan
  * @Date:   2022-04-18 16:10:08
  * @Last Modified by:   Ayush Ranjan
- * @Last Modified time: 2022-04-22 00:22:59
+ * @Last Modified time: 2022-04-24 22:18:53
  */
 .pointer {
   cursor: pointer;
 }
 .post-card {
-  width: 80%;
+  width: 100%;
 }

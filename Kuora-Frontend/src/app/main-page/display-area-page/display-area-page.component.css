@@ -2,7 +2,7 @@
  * @Author: Ayush Ranjan
  * @Date:   2022-04-18 16:10:08
  * @Last Modified by:   Ayush Ranjan
- * @Last Modified time: 2022-04-22 20:55:11
+ * @Last Modified time: 2022-04-24 22:19:42
  */
 .filter {
   position: fixed;
@@ -17,7 +17,7 @@
   background-color: white;
   height: 35vh;
   padding: 20px;
-  width: 70%;
+  width: 100%;
   border: 1px solid rgb(214, 212, 212);
   box-shadow: 1px 1px 2px rgb(225, 223, 223);
 }
