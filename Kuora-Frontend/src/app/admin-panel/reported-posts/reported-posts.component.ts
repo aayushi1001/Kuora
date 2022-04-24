@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportGetServiceService } from 'src/app/resources/report-get-service.service';
 import { DeletePostService } from 'src/app/resources/delete-post.service';
+import { DeleteReportService } from 'src/app/resources/delete-report.service';
 
 @Component({
   selector: 'app-reported-posts',
@@ -9,7 +10,7 @@ import { DeletePostService } from 'src/app/resources/delete-post.service';
 })
 export class ReportedPostsComponent implements OnInit {
 
-  constructor(private getReports : ReportGetServiceService, private deletePost:DeletePostService) { }
+  constructor(private getReports : ReportGetServiceService, private deletePost:DeletePostService, private deleteReport : DeleteReportService) { }
 
   ReportsList:any[]=[];
   ReportedByList:any[]=[];
@@ -28,6 +29,7 @@ export class ReportedPostsComponent implements OnInit {
     this.ReportsList = this.ReportsList.filter(function( obj ) {
           return obj.postid !== postId;
       });
+      this.deleteReport.DeleteReport(postId);
   }
 
   DeletePost(postId:any ){
@@ -38,6 +40,7 @@ export class ReportedPostsComponent implements OnInit {
         this.ReportsList = this.ReportsList.filter(function( obj ) {
           return obj.postid !== postId;
       });
+      this.deleteReport.DeleteReport(postId);
     }
     else{
       console.log("Error in api");
