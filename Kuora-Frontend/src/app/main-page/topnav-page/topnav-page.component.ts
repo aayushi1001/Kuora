@@ -13,12 +13,16 @@ export class TopnavPageComponent implements OnInit {
 @Output() changeStatus: EventEmitter<boolean> = new EventEmitter();
 value:string="";
 activeUserEmail: string = '';
-
+admin:boolean= false;
 constructor(private router: Router,
 private loginService: LoginService) { }
 
 ngOnInit(): void {
 this.activeUserEmail = this.loginService.getActiveUserDetails().email;
+if(this.loginService.getActiveUserDetails().signupas === "admin")
+{
+  this.admin=true;
+}
 }
 
 search(){
