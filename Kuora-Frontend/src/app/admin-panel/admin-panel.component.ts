@@ -12,4 +12,8 @@ export class AdminPanelComponent implements OnInit {
   ngOnInit(): void {
     this.router.navigate(['/admin-panel/verify']);
   }
+  back()
+  {
+    this.router.navigate(['/main-page/display-area/all']);
+  }
 }
