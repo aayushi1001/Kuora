@@ -33,6 +33,7 @@ import {CommentService} from "./resources/comment.service";
 import { CommentCardComponent } from './main-page/display-area-page/post-card-page/comment-card/comment-card.component';
 import { RouteActivate } from './resources/route-activate.service';
 import { WildRouteComponent } from './wild-route-component/wild-route.component'
+import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { WildRouteComponent } from './wild-route-component/wild-route.component'
     UserListComponent,
     ReportedPostsComponent,
     CommentCardComponent,
-    WildRouteComponent
+    WildRouteComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

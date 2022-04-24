@@ -14,7 +14,7 @@
   <a><b>KUORA</b></a>
   </div>
   </div>
-  
+
   <form class="d-flex search">
   <input
   [(ngModel)]="value"
@@ -29,7 +29,7 @@
   </form>
   </div>
   </nav>
-  
+
   <div class="dropdown setting float-end m-2">
   <button
   class="btn dropdown-toggle"
@@ -54,6 +54,11 @@
   >Verification Portal</a
   >
   </li>
+    <li *ngIf="admin">
+      <a routerLink="/admin-panel/verify" class="dropdown-item"
+      >Admin Panel</a
+      >
+    </li>
   <li (click)="logout()"><a class="dropdown-item">Logout</a></li>
   </ul>
   </div>

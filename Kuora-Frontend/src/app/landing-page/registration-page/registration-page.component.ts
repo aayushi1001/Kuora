@@ -24,9 +24,10 @@ export class RegistrationPageComponent implements OnInit {
   userProfiles = ['Professor', 'Non-teaching Staff', 'Student'];
   signupForm!: FormGroup;
   emailInputType: string = 'text';
+  otpInput: string = 'number';
   errorResponse: string = '';
   @Output() isLogin = new EventEmitter<boolean>();
-  
+
   constructor(private http : HttpClient,
               private router : Router,
               private loginService: LoginService) { }
@@ -36,6 +37,7 @@ export class RegistrationPageComponent implements OnInit {
       'username': new FormControl(null, [Validators.required]),
       'profile': new FormControl('Professor', [Validators.required]),
       'email': new FormControl(null, [Validators.required]),
+      'otp':  new FormControl(null, [Validators.required]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(8), this.PasswordValidation]),
       'confirm-password': new FormControl(null, [Validators.required, this.ConfirmPasswordValidation]),
       'description': new FormControl(null)
@@ -49,6 +51,7 @@ export class RegistrationPageComponent implements OnInit {
     signUpformData.append('password', this.signupForm.controls['password'].value);
     signUpformData.append('signupas', this.signupForm.controls['profile'].value);
     signUpformData.append('email', userEmail);
+    signUpformData.append('otp', this.signupForm.controls['otp'].value)
     signUpformData.append('bio', this.signupForm.controls['description'].value);
     signUpformData.append('verified', 'false');
     signUpformData.append('blocked', 'false');
@@ -67,7 +70,21 @@ export class RegistrationPageComponent implements OnInit {
       }
     })
   }
-
+ sendOtp()
+ {
+   const userEmail = (this.signupForm.controls['email'].value).toString() + '@kiit.ac.in';
+   const body ={
+     "email": userEmail
+   }
+   this.http.post<RegistrationResponseData>(environment.url_Api + 'register/send', body)
+     .subscribe(responseData => {
+       if(responseData.code === 200){
+         console.log(responseData);
+       } else {
+         this.errorResponse = responseData.message;
+       }
+     })
+ }
   updateEmailInputType(data: any){
     (data.signupForm.value.profile === 'Student') ? this.emailInputType = 'number' : this.emailInputType = 'text';
   }

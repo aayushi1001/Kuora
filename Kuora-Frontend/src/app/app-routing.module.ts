@@ -14,23 +14,24 @@ import { UserListComponent } from './admin-panel/user-list/user-list.component';
 import { ReportedPostsComponent } from './admin-panel/reported-posts/reported-posts.component';
 import { RouteActivate } from './resources/route-activate.service';
 import { WildRouteComponent } from './wild-route-component/wild-route.component';
+import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
 
 const routes: Routes = [
   {
-    path : '' , 
-    redirectTo : '/landing-page' , 
+    path : '' ,
+    redirectTo : '/landing-page' ,
     pathMatch : 'full',
   },
   {
-    path : 'landing-page' , 
-    component : LandingPageComponent, 
+    path : 'landing-page' ,
+    component : LandingPageComponent,
     children: [
       {path : 'login' , component : LoginPageComponent},
       {path : 'registration' , component : RegistrationPageComponent}
     ]
   },
   {
-    path : 'main-page' , 
+    path : 'main-page' ,
     component : MainPageComponent,
     canActivate: [RouteActivate],
     children:[
@@ -42,16 +43,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin-panel', component:AccountVerificationListComponent
+    path: 'admin-panel', component:AdminPanelComponent,
+    canActivate: [RouteActivate],
+    children: [
+      {path: 'verify', component: AccountVerificationListComponent},
+      {path: 'users-list', component:UserListComponent},
+      {path: 'reported-posts', component:ReportedPostsComponent},
+    ]
   },
-  {
-    path: 'users-list', component:UserListComponent
-    
-  },
-  {
-    path: 'reported-posts', component:ReportedPostsComponent
-    
-  },
+
   { path: 'not-found', component: WildRouteComponent },
   { path : '**', redirectTo: '/not-found' }
 ];
