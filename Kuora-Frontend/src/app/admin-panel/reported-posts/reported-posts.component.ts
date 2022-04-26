@@ -22,35 +22,34 @@ export class ReportedPostsComponent implements OnInit {
 
   OpenReportedByModal(reportedbylist:any){
     this.ReportedByList=reportedbylist;
-    
+
   }
 
   IgnorePost(postId:any){
-    this.ReportsList = this.ReportsList.filter(function( obj ) {
+      this.deleteReport.DeleteReport(postId).subscribe(responseData => {
+        this.ReportsList = this.ReportsList.filter(function( obj ) {
           return obj.postid !== postId;
+        });
       });
-      this.deleteReport.DeleteReport(postId);
   }
 
   DeletePost(postId:any ){
-    
+
     this.deletePost.DeletePost(postId).subscribe((responseData:any) => {
-      
-      if(responseData.ok===1){
-        this.ReportsList = this.ReportsList.filter(function( obj ) {
-          return obj.postid !== postId;
       });
-      this.deleteReport.DeleteReport(postId);
+      this.deleteReport.DeleteReport(postId).subscribe((responseData:any) => {
+
+        if(responseData.ok===1){
+          this.ReportsList = this.ReportsList.filter(function( obj ) {
+            return obj.postid !== postId;
+          });;
     }
     else{
       console.log("Error in api");
     }
       console.log("Unblocked : "+responseData)
-    
-    
     });
     //this.getUsersService.GetList().subscribe(responseData => {this.UsersList=responseData.user});
-  
   }
 
 }
